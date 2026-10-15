@@ -1,0 +1,8 @@
+
+  "name": "شغلي",
+  "short_name": "شغلي",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#a18cd1",
+  "theme_color": "#7b5bff"
+}

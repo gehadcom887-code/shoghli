@@ -3,40 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIRA PRO</title>
+<title>SIRA - سِيرة</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Cairo',sans-serif;background:#f2f4f7}
-.header{background:#111;color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.lang-btn{background:white;color:#111;border:none;padding:8px 16px;border-radius:20px;font-weight:700;cursor:pointer}
+body{font-family:'Cairo',sans-serif;background:#f4f5f7}
+.header{background:#111;color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+.lang-btn{background:white;color:#111;border:none;padding:8px 16px;border-radius:20px;font-weight:700;cursor:pointer;font-size:13px}
 .container{max-width:1150px;margin:20px auto;display:grid;grid-template-columns:380px 1fr;gap:20px;padding:0 15px}
-.form-box,.preview-box{background:white;border-radius:16px;padding:22px;box-shadow:0 4px 12px #0001}
-input,textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid #ddd;border-radius:10px;font-family:inherit}
-.btn-main{width:100%;padding:14px;background:#111;color:white;border:none;border-radius:12px;font-weight:800;cursor:pointer}
-.btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:white;border:none;border-radius:12px;font-weight:700;cursor:pointer}
-#cvPreview{padding:30px;border:1px solid #eee;min-height:600px;color:#222}
+.form-box,.preview-box{background:white;border-radius:18px;padding:22px;box-shadow:0 6px 20px #0001}
+.form-box input,.form-box textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px}
+.btn-main{width:100%;padding:15px;background:#111;color:white;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:16px}
+#cvPreview{padding:32px;border:1px solid #eee;min-height:620px;color:#222;background:white}
 .cv-top{display:flex;justify-content:space-between;border-bottom:3px solid #111;padding-bottom:15px;margin-bottom:15px}
-.cv-top h1{font-size:26px;min-height:30px}
+.cv-top h1{font-size:26px;min-height:32px}
 #cvImg{width:85px;height:85px;border-radius:50%;object-fit:cover;display:none;border:2px solid #111}
 .cv-head{font-weight:700;font-size:13px;margin-bottom:6px}
-.cv-text{font-size:12.5px;white-space:pre-wrap;line-height:1.7;min-height:15px}
+.cv-text{font-size:12.5px;white-space:pre-wrap;line-height:1.8}
 .layout{display:grid;grid-template-columns:120px 1fr;gap:15px;margin-top:10px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
 .modal.show{display:flex}
-.modal-box{background:white;padding:28px;border-radius:20px;max-width:400px;width:100%;text-align:center}
-.badge{background:#eef4ff;color:#1a73e8;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
-.vf-box{background:#fff5f6;border:1.5px dashed #e11d48;border-radius:12px;padding:16px;margin:16px 0}
-.code-input{letter-spacing:4px;text-align:center;font-size:20px;font-weight:800}
-.hidden{display:none}
+.modal-box{background:white;padding:26px;border-radius:22px;max-width:410px;width:100%;text-align:center;box-shadow:0 20px 50px #0003}
+.badge{background:linear-gradient(135deg,#1a73e8,#0d47a1);color:white;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
+.vf-box{background:#fff5f6;border:1.8px dashed #e11d48;border-radius:14px;padding:16px;margin:14px 0}
+.input-secure{width:100%;padding:12px;margin-bottom:8px;border:1.5px solid #ddd;border-radius:10px;font-family:inherit;text-align:center;font-weight:700;font-size:14px}
+.input-secure.error{border-color:#e11d48;background:#fff5f5}
+.err-msg{color:#e11d48;font-size:11px;margin:-4px 0 8px;display:none;text-align:right}
+.btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:white;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:15px}
+.btn-gold:disabled{background:#ccc;cursor:not-allowed}
 @media print{.header,.form-box,.modal{display:none!important}.container{display:block;margin:0;padding:0}.preview-box{box-shadow:none;border:none}}
 @media(max-width:900px){.container{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
 <div class="header">
-<b id="hLogo">SIRA PRO ✨</b>
+<b>SIRA - سِيرة ✨</b>
 <button class="lang-btn" onclick="toggleLang()" id="langBtn">English 🇺🇸</button>
 </div>
 
@@ -76,50 +77,47 @@ input,textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid #ddd;
 </div>
 </div>
 
-<!-- بوابة الدفع -->
 <div id="payModal" class="modal">
-<div class="modal-box" id="step1">
-<div class="badge" id="badge1">✨ سيرتك جاهزة</div>
+<div class="modal-box">
+<div class="badge">SIRA PRO ✨</div>
 <h2 id="payTitle1">فتح التحميل بجودة عالية</h2>
-<p id="payDesc1" style="color:#666;font-size:13px;margin-top:8px;line-height:1.6">سيرتك الاحترافية جاهزة بصيغة PDF عالية الجودة، جاهزة للطباعة والإرسال</p>
+<p id="payDesc1" style="color:#666;font-size:13px;margin-top:8px;line-height:1.6">سيرتك الاحترافية جاهزة بصيغة PDF عالية الجودة</p>
+
 <div class="vf-box">
 <div style="font-size:12px;color:#666" id="payVia">الدفع الآمن عبر</div>
-<div style="font-weight:800;color:#e11d48;font-size:18px">Vodafone Cash</div>
-<div style="font-size:23px;font-weight:900">01013724578</div>
+<div style="font-weight:900;color:#e11d48;font-size:18px">Vodafone Cash</div>
+<div style="font-size:24px;font-weight:900;letter-spacing:1px">01013724578</div>
 <div style="font-size:11px;color:#666;margin-top:4px" id="payFee">رسوم الخدمة: 100 جنيه • تفعيل فوري</div>
 </div>
-<button class="btn-gold" id="btnWa" onclick="goStep2()">تأكيد التحويل عبر واتساب 💬</button>
-<p style="font-size:11px;color:#999;margin-top:10px" id="payNote">بعد التحويل، اضغطي لتأكيد الدفع</p>
-<button onclick="closePay()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer" id="btnCancel1">رجوع</button>
+
+<div style="text-align:right">
+<label style="font-size:12px;font-weight:700" id="lblTrx">رقم العملية من رسالة فودافون *</label>
+<input id="trxId" class="input-secure" placeholder="مثال: 1234567890" oninput="validateForm()">
+<div class="err-msg" id="errTrx">لازم تكتبي رقم العملية</div>
+
+<label style="font-size:12px;font-weight:700" id="lblPhone">رقمك اللي حولتي منه *</label>
+<input id="senderPhone" class="input-secure" placeholder="01xxxxxxxxx" oninput="validateForm()">
+<div class="err-msg" id="errPhone">لازم تكتبي رقمك</div>
+
+<label style="font-size:12px;font-weight:700" id="lblName">اسمك *</label>
+<input id="senderName" class="input-secure" placeholder="اسمك الكامل" oninput="validateForm()">
+<div class="err-msg" id="errName">لازم تكتبي اسمك</div>
 </div>
 
-<div class="modal-box hidden" id="step2">
-<div class="badge">🔒 تأكيد الدفع</div>
-<h2 id="codeTitle">ادخلي كود التفعيل</h2>
-<p id="codeDesc" style="color:#666;font-size:13px;margin:10px 0;line-height:1.6">بعد ما تبعتي سكرين التحويل على واتساب، جهاد هتبعتلك كود تفعيل مكون من 4 أرقام. دخليه هنا لفتح التحميل.</p>
-<input id="codeInput" class="code-input" placeholder="0000" maxlength="4">
-<p id="codeError" style="color:#e11d48;font-size:12px;margin-top:8px;display:none">الكود غلط، اتأكدي من واتساب</p>
-<button class="btn-main" id="btnVerify" onclick="verifyCode()">تفعيل وتحميل الآن ✅</button>
-<button onclick="backStep1()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer" id="btnBack">رجوع</button>
+<button class="btn-gold" id="btnWa" onclick="confirmAndDownload()" disabled>تأكيد الدفع وتحميل السيرة 💳⬇️</button>
+<p style="font-size:10px;color:#999;margin-top:8px" id="secureNote">🔒 سيتم حفظ رقم العملية للمراجعة في أنا فودافون</p>
+<button onclick="closePay()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer;font-size:13px" id="btnCancel1">رجوع</button>
 </div>
 </div>
 
 <script>
 let isAr=true;
-const T={
-ar:{logo:'SIRA PRO ✨',en:'English 🇺🇸',fTitle:'📝 بياناتك الشخصية',n:'الاسم الكامل',j:'المسمى الوظيفي',p:'رقم الهاتف',e:'البريد الإلكتروني',a:'العنوان',ab:'نبذة عنك',ex:'الخبرات العملية',ed:'المؤهل الدراسي',co:'الكورسات والمهارات',btnDown:'⬇️ تحميل النسخة الاحترافية',lAbout:'النبذة',lExp:'الخبرات',lEdu:'التعليم',lCourses:'الكورسات',payTitle:'فتح التحميل بجودة عالية',payDesc:'سيرتك الاحترافية جاهزة بصيغة PDF عالية الجودة، جاهزة للطباعة والإرسال',via:'الدفع الآمن عبر',fee:'رسوم الخدمة: 100 جنيه • تفعيل فوري',wa:'تأكيد التحويل عبر واتساب 💬',note:'بعد التحويل، اضغطي لتأكيد الدفع',cancel:'رجوع',codeTitle:'ادخلي كود التفعيل',codeDesc:'بعد ما تبعتي سكرين التحويل على واتساب، جهاد هتبعتلك كود تفعيل مكون من 4 أرقام. دخليه هنا لفتح التحميل.',verify:'تفعيل وتحميل الآن ✅',back:'رجوع',error:'الكود غلط، اتأكدي من واتساب'},
-en:{logo:'SIRA PRO ✨',en:'عربي 🇪🇬',fTitle:'📝 Your Information',n:'Full Name',j:'Job Title',p:'Phone Number',e:'Email',a:'Address',ab:'About You',ex:'Work Experience',ed:'Education',co:'Courses & Skills',btnDown:'⬇️ Download Pro Version',lAbout:'Summary',lExp:'Experience',lEdu:'Education',lCourses:'Courses',payTitle:'Unlock High-Quality Download',payDesc:'Your professional CV is ready in high-quality PDF format, ready to print and send',via:'Secure Payment via',fee:'Service fee: 100 EGP • Instant activation',wa:'Confirm via WhatsApp 💬',note:'After payment, click to confirm',cancel:'Back',codeTitle:'Enter Activation Code',codeDesc:'After sending payment screenshot on WhatsApp, Gehad will send you a 4-digit code. Enter it here to unlock download.',verify:'Activate & Download Now ✅',back:'Back',error:'Wrong code, check WhatsApp'}
-};
 function toggleLang(){
-isAr=!isAr; const t=isAr?T.ar:T.en;
-document.documentElement.dir=isAr?'rtl':'ltr'; document.documentElement.lang=isAr?'ar':'en';
-document.body.style.fontFamily=isAr?"'Cairo',sans-serif":"'Inter',sans-serif";
-hLogo.innerText=t.logo; langBtn.innerText=t.en; fTitle.innerText=t.fTitle;
-iName.placeholder=t.n; iJob.placeholder=t.j; iPhone.placeholder=t.p; iEmail.placeholder=t.e; iAddress.placeholder=t.a;
-iAbout.placeholder=t.ab; iExp.placeholder=t.ex; iEdu.placeholder=t.ed; iCourses.placeholder=t.co;
-btnDown.innerText=t.btnDown; lAbout.innerText=t.lAbout; lExp.innerText=t.lExp; lEdu.innerText=t.lEdu; lCourses.innerText=t.lCourses;
-payTitle1.innerText=t.payTitle; payDesc1.innerText=t.payDesc; payVia.innerText=t.via; payFee.innerText=t.fee; btnWa.innerText=t.wa; payNote.innerText=t.note; btnCancel1.innerText=t.cancel;
-codeTitle.innerText=t.codeTitle; codeDesc.innerText=t.codeDesc; btnVerify.innerText=t.verify; btnBack.innerText=t.back; codeError.innerText=t.error;
+isAr=!isAr;
+document.documentElement.dir=isAr?'rtl':'ltr';
+document.getElementById('langBtn').innerText=isAr?'English 🇺🇸':'عربي 🇪🇬';
+document.getElementById('fTitle').innerText=isAr?'📝 بياناتك الشخصية':'📝 Your Info';
+document.getElementById('btnDown').innerText=isAr?'⬇️ تحميل النسخة الاحترافية':'⬇️ Download Pro Version';
 }
 function loadImg(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=x=>{cvImg.src=x.target.result;cvImg.style.display='block';};r.readAsDataURL(f);}
 function u(){
@@ -127,23 +125,24 @@ cName.innerText=iName.value; cJob.innerText=iJob.value;
 let h=''; if(iPhone.value) h+=`📞 ${iPhone.value}<br>`; if(iEmail.value) h+=`✉️ ${iEmail.value}<br>`; if(iAddress.value) h+=`📍 ${iAddress.value}`;
 cContact.innerHTML=h; cAbout.innerText=iAbout.value; cExp.innerText=iExp.value; cEdu.innerText=iEdu.value; cCourses.innerText=iCourses.value;
 }
-function openPay(){document.getElementById('payModal').classList.add('show'); document.getElementById('step1').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden')}
+function openPay(){document.getElementById('payModal').classList.add('show')}
 function closePay(){document.getElementById('payModal').classList.remove('show')}
-function goStep2(){
-window.open('https://wa.me/201013724578?text=مرحبا جهاد، حولت 100 جنيه فودافون كاش على 01013724578 وعايزة كود تفعيل تحميل السي في','_blank');
-document.getElementById('step1').classList.add('hidden');
-document.getElementById('step2').classList.remove('hidden');
+function validateForm(){
+const trx=trxId.value.trim(), phone=senderPhone.value.trim(), name=senderName.value.trim();
+let ok=true;
+if(!trx){trxId.classList.add('error'); errTrx.style.display='block'; ok=false}else{trxId.classList.remove('error'); errTrx.style.display='none'}
+if(!phone){senderPhone.classList.add('error'); errPhone.style.display='block'; ok=false}else{senderPhone.classList.remove('error'); errPhone.style.display='none'}
+if(!name){senderName.classList.add('error'); errName.style.display='block'; ok=false}else{senderName.classList.remove('error'); errName.style.display='none'}
+btnWa.disabled=!ok; return ok;
 }
-function backStep1(){document.getElementById('step2').classList.add('hidden'); document.getElementById('step1').classList.remove('hidden')}
-function verifyCode(){
-const code=document.getElementById('codeInput').value.trim();
-// الكود اللي انتي بس اللي عارفاه - غيريه براحتك
-const SECRET_CODE="1010";
-if(code===SECRET_CODE){
-closePay(); setTimeout(()=>window.print(),400);
-}else{
-document.getElementById('codeError').style.display='block';
-}
+function confirmAndDownload(){
+if(!validateForm()) return;
+const trx=encodeURIComponent(trxId.value.trim());
+const phone=encodeURIComponent(senderPhone.value.trim());
+const name=encodeURIComponent(senderName.value.trim());
+const msg=`تم دفع 100ج فودافون كاش على 01013724578%0A%0Aالاسم: ${name}%0Aرقمي: ${phone}%0Aرقم العملية: ${trx}%0A%0Aتم التحميل من SIRA`;
+window.open(`https://wa.me/201013724578?text=${msg}`,'_blank');
+setTimeout(()=>{closePay(); window.print();},900);
 }
 u();
 </script>

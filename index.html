@@ -15,7 +15,7 @@ body{font-family:'Cairo',sans-serif;background:#f4f5f7}
 .form-box input,.form-box textarea{width:100%;padding:11px;margin-bottom:8px;border:1px solid #ddd;border-radius:10px;font-family:inherit;font-size:13px}
 .small-label{font-size:11px;font-weight:800;color:#555;margin-bottom:3px;display:block;text-align:right}
 .btn-main{width:100%;padding:15px;background:#111;color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:15px;margin-top:8px}
-#cvPreview{padding:28px;border:1px solid #eee;min-height:680px;background:#fff;color:#222;transition:.2s}
+#cvPreview{padding:28px;border:1px solid #eee;min-height:680px;background:#fff;color:#222}
 .cv-top{display:flex;justify-content:space-between;border-bottom:3px solid #111;padding-bottom:12px;margin-bottom:12px}
 #cvImg{width:75px;height:75px;border-radius:50%;object-fit:cover;display:none;border:2px solid #111}
 .cv-head{font-weight:800;font-size:12px;margin-bottom:4px}
@@ -23,122 +23,84 @@ body{font-family:'Cairo',sans-serif;background:#f4f5f7}
 .layout{display:grid;grid-template-columns:110px 1fr;gap:12px;margin-top:8px}
 .t-title{font-weight:900;font-size:13px;margin-bottom:10px;display:flex;justify-content:space-between}
 .t-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.t-card{border:2px solid #eee;border-radius:12px;overflow:hidden;cursor:pointer;position:relative;background:#fff;transition:.2s}
-.t-card:hover{transform:translateY(-2px);border-color:#111}
+.t-card{border:2px solid #eee;border-radius:12px;overflow:hidden;cursor:pointer;position:relative;background:#fff}
 .t-card.active{border-color:#1a73e8;box-shadow:0 0 0 3px #1a73e830}
 .t-thumb{height:80px;background:#f9f9f9;display:flex;align-items:center;justify-content:center;font-size:26px}
 .t-name{padding:6px;font-size:10px;font-weight:800;text-align:center}
 .t-badge{position:absolute;top:5px;right:5px;font-size:8px;font-weight:900;padding:2px 6px;border-radius:10px;color:#fff}
 .t-badge.free{background:#22c55e} .t-badge.pro{background:#f59e0b}
-.t-lock{position:absolute;inset:0;background:rgba(0,0,0,.62);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:800;backdrop-filter:blur(1px)}
+.t-lock{position:absolute;inset:0;background:rgba(0,0,0,.62);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:800}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(7px);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
 .modal.show{display:flex}
-.modal-box{background:#fff;padding:24px;border-radius:22px;max-width:440px;width:100%;text-align:center;max-height:95vh;overflow:auto}
-.badge-top{background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:800;display:inline-block;margin-bottom:8px}
-.vf-box{background:#fff5f6;border:1.8px dashed #e11d48;border-radius:14px;padding:14px;margin:12px 0;text-align:center}
+.modal-box{background:#fff;padding:24px;border-radius:22px;max-width:440px;width:100%;text-align:center}
+.vf-box{background:#fff5f6;border:1.8px dashed #e11d48;border-radius:14px;padding:14px;margin:12px 0}
 .price-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-.price-opt{border:2px solid #eee;border-radius:12px;padding:10px;cursor:pointer;text-align:center;transition:.2s}
+.price-opt{border:2px solid #eee;border-radius:12px;padding:10px;cursor:pointer;text-align:center}
 .price-opt.active{border-color:#111;background:#111;color:#fff}
-.price-opt.pro.active{border-color:#f59e0b;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.price-opt.pro.active{border-color:#f59e0b;background:linear-gradient(135deg,#f59e0b,#d97706)}
 .security-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:10px;margin:10px 0;text-align:right;font-size:11px;line-height:1.6;color:#166534}
-.input-secure{width:100%;padding:12px;margin-bottom:6px;border:1.5px solid #ddd;border-radius:10px;text-align:center;font-weight:700;font-family:inherit}
+.input-secure{width:100%;padding:12px;margin-bottom:6px;border:1.5px solid #ddd;border-radius:10px;text-align:center;font-weight:700}
 .input-secure.error{border-color:#e11d48;background:#fff5f5}
 .err{color:#e11d48;font-size:10px;display:none;text-align:right;margin:-2px 0 6px}
 .btn-gold{width:100%;padding:14px;background:#111;color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer}
-.btn-gold:disabled{background:#ccc;cursor:not-allowed}
+.btn-gold:disabled{background:#ccc}
 @media print{.header,.form-box,.templates-box,.modal{display:none!important}.container{display:block}.preview-box{box-shadow:none}}
 @media(max-width:1150px){.container{grid-template-columns:1fr}.templates-box{order:-1}}
 .theme-classic #cvPreview{font-family:serif}
-.theme-elegant #cvPreview{background:#fdf8f3;border-color:#e8d5b5}
+.theme-elegant #cvPreview{background:#fdf8f3}
 .theme-creative #cvPreview{border-right:8px solid #7c3aed;background:#f5f3ff}
 .theme-executive #cvPreview{background:#0f172a;color:#e2e8f0}
-.theme-executive .cv-top{border-color:#38bdf8}
-.theme-minimal #cvPreview{border:none;box-shadow:none}
+.theme-minimal #cvPreview{border:none}
 </style>
 </head>
 <body>
 <div class="header"><b id="logo">SIRA - سِيرة ✨</b><button class="lang-btn" id="langBtn" onclick="toggleLang()">English 🇺🇸</button></div>
-
 <div class="container">
 <div class="form-box">
-<h3 id="fTitle">📝 بياناتك الشخصية</h3>
+<h3 id="fTitle">📝 بياناتك</h3>
 <input type="file" accept="image/*" onchange="loadImg(event)">
 <span class="small-label" id="lblAr">الاسم بالعربي *</span>
-<input id="iNameAr" placeholder="مثال: جهاد محمد" oninput="u()">
+<input id="iNameAr" placeholder="اكتبي اسمك بالعربي" oninput="u()">
 <span class="small-label" id="lblEn">الاسم بالانجليزي *</span>
-<input id="iNameEn" placeholder="Example: Gehad Mohamed" oninput="u()">
-<input id="iJob" placeholder="المسمى الوظيفي - Job Title" oninput="u()">
+<input id="iNameEn" placeholder="Write your name in English" oninput="u()">
+<input id="iJob" placeholder="المسمى الوظيفي" oninput="u()">
 <input id="iPhone" placeholder="رقم الهاتف" oninput="u()">
-<input id="iEmail" placeholder="البريد الإلكتروني" oninput="u()">
+<input id="iEmail" placeholder="البريد" oninput="u()">
 <input id="iAddress" placeholder="العنوان" oninput="u()">
 <textarea id="iAbout" rows="2" placeholder="نبذة عنك" oninput="u()"></textarea>
-<textarea id="iExp" rows="3" placeholder="الخبرات العملية" oninput="u()"></textarea>
-<textarea id="iEdu" rows="2" placeholder="المؤهل الدراسي" oninput="u()"></textarea>
-<textarea id="iCourses" rows="2" placeholder="الكورسات والمهارات" oninput="u()"></textarea>
+<textarea id="iExp" rows="3" placeholder="الخبرات" oninput="u()"></textarea>
+<textarea id="iEdu" rows="2" placeholder="المؤهل" oninput="u()"></textarea>
+<textarea id="iCourses" rows="2" placeholder="الكورسات" oninput="u()"></textarea>
 <button class="btn-main" id="btnDown" onclick="openPay()">⬇️ تحميل السيرة الذاتية</button>
 </div>
-
-<div class="preview-box"><div id="cvPreview"><div class="cv-top"><div><h1 id="cName" style="font-size:22px"></h1><div id="cJob" style="color:#666;font-size:13px"></div><div class="layout"><div style="border-left:1px solid #eee;padding-left:10px"><div id="cContact" style="font-size:11px;line-height:2.1"></div></div><div><div class="cv-head" id="lAbout">النبذة</div><div id="cAbout" class="cv-text"></div></div></div></div><img id="cvImg"></div><div style="margin-top:12px"><div class="cv-head" id="lExp">الخبرات</div><div id="cExp" class="cv-text"></div></div><div style="margin-top:12px"><div class="cv-head" id="lEdu">التعليم</div><div id="cEdu" class="cv-text"></div></div><div style="margin-top:12px"><div class="cv-head" id="lCourses">الكورسات</div><div id="cCourses" class="cv-text"></div></div></div></div>
-
+<div class="preview-box"><div id="cvPreview"><div class="cv-top"><div><h1 id="cName" style="font-size:22px"></h1><div id="cJob" style="color:#666"></div><div class="layout"><div style="border-left:1px solid #eee;padding-left:10px"><div id="cContact" style="font-size:11px;line-height:2.1"></div></div><div><div class="cv-head" id="lAbout">النبذة</div><div id="cAbout" class="cv-text"></div></div></div></div><img id="cvImg"></div><div style="margin-top:12px"><div class="cv-head" id="lExp">الخبرات</div><div id="cExp" class="cv-text"></div></div><div style="margin-top:12px"><div class="cv-head" id="lEdu">التعليم</div><div id="cEdu" class="cv-text"></div></div><div style="margin-top:12px"><div class="cv-head" id="lCourses">الكورسات</div><div id="cCourses" class="cv-text"></div></div></div></div>
 <div class="templates-box">
-<div class="t-title"><span id="tTitle">🎨 القوالب الاحترافية</span><span style="font-size:10px;color:#888" id="tSub">1 مجاني • 5 برو</span></div>
+<div class="t-title"><span id="tTitle">🎨 القوالب</span><span style="font-size:10px;color:#888" id="tSub">1 مجاني • 5 برو</span></div>
 <div class="t-grid" id="tGrid"></div>
 <div style="margin-top:12px;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:10px;text-align:center">
 <div style="font-size:11px;font-weight:900" id="priceInfo">💰 التسعير</div>
-<div style="font-size:10px;color:#444;margin-top:4px;line-height:1.6" id="priceDesc">القالب العادي <b>100 جنيه</b><br>القوالب الاحترافية <b>150 جنيه</b><br>ويفتح كل القوالب</div>
+<div style="font-size:10px;color:#444;margin-top:4px;line-height:1.6" id="priceDesc">العادي <b>100 جنيه</b><br>الاحترافي <b>150 جنيه</b></div>
 </div>
 </div>
 </div>
-
 <div id="payModal" class="modal">
 <div class="modal-box">
-<div class="badge-top">SIRA PRO - دفع آمن ✨</div>
-<h2 id="payTitle" style="margin-top:6px">تحميل السيرة الذاتية</h2>
-<p style="font-size:12px;color:#666;margin:6px 0" id="payDesc">سيرتك جاهزة بجودة عالية - اختاري الباقة</p>
-
+<h2 id="payTitle">تحميل السيرة الذاتية</h2>
 <div class="price-switch">
-<div class="price-opt" id="opt100" onclick="setPrice(100)">
-<div style="font-weight:900;font-size:12px">العادي</div>
-<div style="font-size:18px;font-weight:900;margin:2px 0">100 جنيه</div>
-<div style="font-size:9px">قالب واحد + PDF</div>
+<div class="price-opt" id="opt100" onclick="setPrice(100)"><div style="font-weight:900">العادي</div><div style="font-size:18px;font-weight:900">100 جنيه</div></div>
+<div class="price-opt pro" id="opt150" onclick="setPrice(150)"><div style="font-weight:900">الاحترافي ✨</div><div style="font-size:18px;font-weight:900">150 جنيه</div></div>
 </div>
-<div class="price-opt pro" id="opt150" onclick="setPrice(150)">
-<div style="font-weight:900;font-size:12px">الاحترافي ✨</div>
-<div style="font-size:18px;font-weight:900;margin:2px 0">150 جنيه</div>
-<div style="font-size:9px">6 قوالب + HD</div>
-</div>
-</div>
-
-<div class="vf-box">
-<div style="font-size:11px;color:#666">🔒 الدفع الآمن عبر</div>
-<div style="font-weight:900;color:#e11d48;font-size:16px">Vodafone Cash</div>
-<div style="font-size:24px;font-weight:900;letter-spacing:1px">01013724578</div>
-<div style="font-size:11px;font-weight:800;margin-top:4px" id="selectedPrice">المبلغ المحدد: 100 جنيه</div>
-</div>
-
-<div class="security-box" id="securityBox">
-🔐 <b>الأمان وطرق الدفع:</b><br>
-• الدفع عن طريق فودافون كاش على الرقم الظاهر<br>
-• لازم تبعتي <b>رقم العملية</b> من رسالة فودافون للتأكيد<br>
-• بنراجع رقم العملية في <b>أنا فودافون</b> قبل التفعيل<br>
-• بعد الدفع يتم التفعيل الفوري وتحميل السيرة PDF<br>
-• للاستفسار: واتساب على نفس الرقم
-</div>
-
+<div class="vf-box"><div style="font-size:11px;color:#666">🔒 الدفع عبر</div><div style="font-weight:900;color:#e11d48">Vodafone Cash</div><div style="font-size:24px;font-weight:900">01013724578</div><div style="font-size:11px;font-weight:800;margin-top:4px" id="selectedPrice">المبلغ: 100 جنيه</div></div>
+<div class="security-box">🔐 <b>الأمان:</b> الدفع فودافون كاش + ارسال رقم العملية للمراجعة في أنا فودافون + تفعيل فوري</div>
 <div style="text-align:right">
-<label style="font-size:11px;font-weight:700">رقم العملية من رسالة فودافون *</label>
-<input id="trxId" class="input-secure" placeholder="مثال: 1234567890" oninput="check()"><div class="err" id="e1">لازم تكتبي رقم العملية عشان نراجع الدفع</div>
-<label style="font-size:11px;font-weight:700">رقمك اللي حولتي منه *</label>
-<input id="sPhone" class="input-secure" placeholder="01xxxxxxxxx" oninput="check()"><div class="err" id="e2">لازم تكتبي رقمك</div>
-<label style="font-size:11px;font-weight:700">اسمك *</label>
-<input id="sName" class="input-secure" placeholder="اسمك الكامل" oninput="check()"><div class="err" id="e3">لازم تكتبي اسمك</div>
+<label style="font-size:11px;font-weight:700">رقم العملية *</label><input id="trxId" class="input-secure" placeholder="من رسالة فودافون" oninput="check()"><div class="err" id="e1">لازم رقم العملية</div>
+<label style="font-size:11px;font-weight:700">رقمك *</label><input id="sPhone" class="input-secure" placeholder="01xxxxxxxxx" oninput="check()"><div class="err" id="e2">لازم رقمك</div>
+<label style="font-size:11px;font-weight:700">اسمك *</label><input id="sName" class="input-secure" placeholder="اسمك" oninput="check()"><div class="err" id="e3">لازم اسمك</div>
 </div>
-
-<button class="btn-gold" id="btnGo" onclick="done()" disabled>تأكيد الدفع وتحميل السيرة الذاتية 💳⬇️</button>
-<button onclick="closePay()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer;font-size:13px">رجوع - إلغاء</button>
+<button class="btn-gold" id="btnGo" onclick="done()" disabled>تأكيد وتحميل 💳</button>
+<button onclick="closePay()" style="margin-top:8px;background:none;border:none;color:#999;cursor:pointer">رجوع</button>
 </div>
 </div>
-
 <script>
 let isAr=true, selected='modern', price=100, isPaid=false;
 const templates=[
@@ -154,47 +116,28 @@ const g=document.getElementById('tGrid'); g.innerHTML='';
 templates.forEach(t=>{
 const locked=!t.free && !isPaid;
 const d=document.createElement('div'); d.className=`t-card ${selected===t.id?'active':''}`;
-d.innerHTML=`<div class="t-thumb">${t.icon}</div><div class="t-name">${isAr?t.name:t.en}</div><div class="t-badge ${t.free?'free':'pro'}">${t.free?(isAr?'مجاني':'FREE'):'PRO'}</div>${locked?'<div class="t-lock">🔒<span style="margin-top:3px">150ج</span></div>':''}`;
+d.innerHTML=`<div class="t-thumb">${t.icon}</div><div class="t-name">${isAr?t.name:t.en}</div><div class="t-badge ${t.free?'free':'pro'}">${t.free?'FREE':'PRO'}</div>${locked?'<div class="t-lock">🔒<br>150ج</div>':''}`;
 d.onclick=()=>selectTpl(t.id); g.appendChild(d);
 });
 }
-function selectTpl(id){
-const tpl=templates.find(x=>x.id===id);
-selected=id;
-if(!tpl.free && !isPaid){ setPrice(150); openPay(); }
-document.body.className=`theme-${id}`;
-render();
-}
-function setPrice(p){
-price=p;
-document.getElementById('opt100').classList.toggle('active',p===100);
-document.getElementById('opt150').classList.toggle('active',p===150);
-document.getElementById('selectedPrice').innerText = isAr?`المبلغ المحدد: ${p} جنيه`:`Amount: ${p} EGP`;
-}
+function selectTpl(id){ selected=id; const tpl=templates.find(x=>x.id===id); if(!tpl.free && !isPaid){ setPrice(150); openPay(); } document.body.className=`theme-${id}`; render(); }
+function setPrice(p){ price=p; document.getElementById('opt100').classList.toggle('active',p===100); document.getElementById('opt150').classList.toggle('active',p===150); document.getElementById('selectedPrice').innerText=isAr?`المبلغ: ${p} جنيه`:`Amount: ${p} EGP`; }
 function toggleLang(){
 isAr=!isAr;
 document.documentElement.dir=isAr?'rtl':'ltr';
 document.getElementById('logo').innerText=isAr?'SIRA - سِيرة ✨':'SIRA ✨';
 document.getElementById('langBtn').innerText=isAr?'English 🇺🇸':'عربي 🇪🇬';
-document.getElementById('fTitle').innerText=isAr?'📝 بياناتك الشخصية':'📝 Your Info';
+document.getElementById('fTitle').innerText=isAr?'📝 بياناتك':'📝 Your Info';
 document.getElementById('lblAr').innerText=isAr?'الاسم بالعربي *':'Arabic Name *';
 document.getElementById('lblEn').innerText=isAr?'الاسم بالانجليزي *':'English Name *';
-document.getElementById('tTitle').innerText=isAr?'🎨 القوالب الاحترافية':'🎨 Pro Templates';
-document.getElementById('tSub').innerText=isAr?'1 مجاني • 5 برو':'1 free • 5 pro';
-document.getElementById('priceInfo').innerText=isAr?'💰 التسعير':'💰 Pricing';
-document.getElementById('priceDesc').innerHTML=isAr?'القالب العادي <b>100 جنيه</b><br>القوالب الاحترافية <b>150 جنيه</b><br>ويفتح كل القوالب':'Basic <b>100 EGP</b><br>Pro templates <b>150 EGP</b><br>Unlock all';
-document.getElementById('btnDown').innerText=isAr?'⬇️ تحميل السيرة الذاتية':'⬇️ Download CV';
-document.getElementById('payTitle').innerText=isAr?'تحميل السيرة الذاتية':'Download Your CV';
-document.getElementById('lAbout').innerText=isAr?'النبذة':'Summary';
-document.getElementById('lExp').innerText=isAr?'الخبرات':'Experience';
-document.getElementById('lEdu').innerText=isAr?'التعليم':'Education';
-document.getElementById('lCourses').innerText=isAr?'الكورسات':'Courses';
-render(); u();
+u(); render();
 }
 function loadImg(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=x=>{cvImg.src=x.target.result;cvImg.style.display='block';};r.readAsDataURL(f);}
 function u(){
-let name = isAr ? (iNameAr.value || iNameEn.value) : (iNameEn.value || iNameAr.value);
-cName.innerText=name;
+// هنا التعديل المهم: عربي مع عربي وانجليزي مع انجليزي
+let name = '';
+if(isAr){ name = iNameAr.value; } else { name = iNameEn.value; }
+cName.innerText = name || (isAr ? 'الاسم' : 'Name');
 cJob.innerText=iJob.value;
 let h=''; if(iPhone.value)h+=`📞 ${iPhone.value}<br>`; if(iEmail.value)h+=`✉️ ${iEmail.value}<br>`; if(iAddress.value)h+=`📍 ${iAddress.value}`;
 cContact.innerHTML=h; cAbout.innerText=iAbout.value; cExp.innerText=iExp.value; cEdu.innerText=iEdu.value; cCourses.innerText=iCourses.value;
@@ -211,10 +154,9 @@ btnGo.disabled=!ok; return ok;
 function done(){
 if(!check())return;
 const trx=encodeURIComponent(trxId.value.trim()), phone=encodeURIComponent(sPhone.value.trim()), name=encodeURIComponent(sName.value.trim());
-const msg=`مرحبا جهاد، حولت ${price} جنيه فودافون كاش على 01013724578%0Aالنوع: ${selected==='modern'?'قالب عادي 100ج':'قالب احترافي 150ج'}%0Aالاسم: ${name}%0Aرقمي: ${phone}%0Aرقم العملية: ${trx}%0Aالقالب المختار: ${selected}`;
+const msg=`مرحبا، حولت ${price} جنيه فودافون كاش على 01013724578%0Aالاسم: ${name}%0Aرقمي: ${phone}%0Aرقم العملية: ${trx}%0Aالقالب: ${selected}`;
 window.open(`https://wa.me/201013724578?text=${msg}`,'_blank');
-isPaid=true; closePay(); render();
-setTimeout(()=>window.print(),900);
+isPaid=true; closePay(); render(); setTimeout(()=>window.print(),900);
 }
 u(); render(); setPrice(100);
 </script>

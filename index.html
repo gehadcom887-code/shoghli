@@ -8,28 +8,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Cairo',sans-serif;background:#f4f5f7}
-.header{background:#111;color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
-.lang-btn{background:white;color:#111;border:none;padding:8px 16px;border-radius:20px;font-weight:700;cursor:pointer;font-size:13px}
+.header{background:#111;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
 .container{max-width:1150px;margin:20px auto;display:grid;grid-template-columns:380px 1fr;gap:20px;padding:0 15px}
-.form-box,.preview-box{background:white;border-radius:18px;padding:22px;box-shadow:0 6px 20px #0001}
+.form-box,.preview-box{background:#fff;border-radius:18px;padding:22px;box-shadow:0 6px 20px #0001}
 .form-box input,.form-box textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px}
-.btn-main{width:100%;padding:15px;background:#111;color:white;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:16px}
-#cvPreview{padding:32px;border:1px solid #eee;min-height:620px;color:#222;background:white}
+.btn-main{width:100%;padding:15px;background:#111;color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:16px}
+#cvPreview{padding:32px;border:1px solid #eee;min-height:620px;background:#fff;color:#222}
 .cv-top{display:flex;justify-content:space-between;border-bottom:3px solid #111;padding-bottom:15px;margin-bottom:15px}
-.cv-top h1{font-size:26px;min-height:32px}
 #cvImg{width:85px;height:85px;border-radius:50%;object-fit:cover;display:none;border:2px solid #111}
 .cv-head{font-weight:700;font-size:13px;margin-bottom:6px}
 .cv-text{font-size:12.5px;white-space:pre-wrap;line-height:1.8}
 .layout{display:grid;grid-template-columns:120px 1fr;gap:15px;margin-top:10px}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
 .modal.show{display:flex}
-.modal-box{background:white;padding:26px;border-radius:22px;max-width:410px;width:100%;text-align:center;box-shadow:0 20px 50px #0003}
-.badge{background:linear-gradient(135deg,#1a73e8,#0d47a1);color:white;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
+.modal-box{background:#fff;padding:26px;border-radius:22px;max-width:410px;width:100%;text-align:center;box-shadow:0 20px 50px #0003}
+.badge{background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
 .vf-box{background:#fff5f6;border:1.8px dashed #e11d48;border-radius:14px;padding:16px;margin:14px 0}
 .input-secure{width:100%;padding:12px;margin-bottom:8px;border:1.5px solid #ddd;border-radius:10px;font-family:inherit;text-align:center;font-weight:700;font-size:14px}
 .input-secure.error{border-color:#e11d48;background:#fff5f5}
 .err-msg{color:#e11d48;font-size:11px;margin:-4px 0 8px;display:none;text-align:right}
-.btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:white;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:15px}
+.btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:15px}
 .btn-gold:disabled{background:#ccc;cursor:not-allowed}
 @media print{.header,.form-box,.modal{display:none!important}.container{display:block;margin:0;padding:0}.preview-box{box-shadow:none;border:none}}
 @media(max-width:900px){.container{grid-template-columns:1fr}}
@@ -38,12 +36,12 @@ body{font-family:'Cairo',sans-serif;background:#f4f5f7}
 <body>
 <div class="header">
 <b>SIRA - سِيرة ✨</b>
-<button class="lang-btn" onclick="toggleLang()" id="langBtn">English 🇺🇸</button>
+<span style="font-size:12px">01013724578</span>
 </div>
 
 <div class="container">
 <div class="form-box">
-<h3 id="fTitle">📝 بياناتك الشخصية</h3>
+<h3>📝 بياناتك الشخصية</h3>
 <input type="file" accept="image/*" onchange="loadImg(event)">
 <input id="iName" placeholder="الاسم الكامل" oninput="u()">
 <input id="iJob" placeholder="المسمى الوظيفي" oninput="u()">
@@ -54,7 +52,7 @@ body{font-family:'Cairo',sans-serif;background:#f4f5f7}
 <textarea id="iExp" rows="4" placeholder="الخبرات العملية" oninput="u()"></textarea>
 <textarea id="iEdu" rows="3" placeholder="المؤهل الدراسي" oninput="u()"></textarea>
 <textarea id="iCourses" rows="3" placeholder="الكورسات والمهارات" oninput="u()"></textarea>
-<button class="btn-main" id="btnDown" onclick="openPay()">⬇️ تحميل النسخة الاحترافية</button>
+<button class="btn-main" onclick="openPay()">⬇️ تحميل النسخة الاحترافية</button>
 </div>
 
 <div class="preview-box">
@@ -65,14 +63,14 @@ body{font-family:'Cairo',sans-serif;background:#f4f5f7}
 <div id="cJob" style="color:#666"></div>
 <div class="layout">
 <div style="border-left:1px solid #eee;padding-left:10px"><div id="cContact" style="font-size:11px;line-height:2.2"></div></div>
-<div><div class="cv-head" id="lAbout">النبذة</div><div id="cAbout" class="cv-text"></div></div>
+<div><div class="cv-head">النبذة</div><div id="cAbout" class="cv-text"></div></div>
 </div>
 </div>
 <img id="cvImg">
 </div>
-<div style="margin-top:15px"><div class="cv-head" id="lExp">الخبرات</div><div id="cExp" class="cv-text"></div></div>
-<div style="margin-top:15px"><div class="cv-head" id="lEdu">التعليم</div><div id="cEdu" class="cv-text"></div></div>
-<div style="margin-top:15px"><div class="cv-head" id="lCourses">الكورسات</div><div id="cCourses" class="cv-text"></div></div>
+<div style="margin-top:15px"><div class="cv-head">الخبرات</div><div id="cExp" class="cv-text"></div></div>
+<div style="margin-top:15px"><div class="cv-head">التعليم</div><div id="cEdu" class="cv-text"></div></div>
+<div style="margin-top:15px"><div class="cv-head">الكورسات</div><div id="cCourses" class="cv-text"></div></div>
 </div>
 </div>
 </div>
@@ -80,45 +78,37 @@ body{font-family:'Cairo',sans-serif;background:#f4f5f7}
 <div id="payModal" class="modal">
 <div class="modal-box">
 <div class="badge">SIRA PRO ✨</div>
-<h2 id="payTitle1">فتح التحميل بجودة عالية</h2>
-<p id="payDesc1" style="color:#666;font-size:13px;margin-top:8px;line-height:1.6">سيرتك الاحترافية جاهزة بصيغة PDF عالية الجودة</p>
+<h2>فتح التحميل بجودة عالية</h2>
+<p style="color:#666;font-size:13px;margin-top:8px;line-height:1.6">سيرتك الاحترافية جاهزة PDF بجودة عالية</p>
 
 <div class="vf-box">
-<div style="font-size:12px;color:#666" id="payVia">الدفع الآمن عبر</div>
+<div style="font-size:12px;color:#666">الدفع الآمن عبر</div>
 <div style="font-weight:900;color:#e11d48;font-size:18px">Vodafone Cash</div>
 <div style="font-size:24px;font-weight:900;letter-spacing:1px">01013724578</div>
-<div style="font-size:11px;color:#666;margin-top:4px" id="payFee">رسوم الخدمة: 100 جنيه • تفعيل فوري</div>
+<div style="font-size:11px;color:#666;margin-top:4px">رسوم الخدمة: 100 جنيه • تفعيل فوري</div>
 </div>
 
 <div style="text-align:right">
-<label style="font-size:12px;font-weight:700" id="lblTrx">رقم العملية من رسالة فودافون *</label>
+<label style="font-size:12px;font-weight:700">رقم العملية من رسالة فودافون *</label>
 <input id="trxId" class="input-secure" placeholder="مثال: 1234567890" oninput="validateForm()">
 <div class="err-msg" id="errTrx">لازم تكتبي رقم العملية</div>
 
-<label style="font-size:12px;font-weight:700" id="lblPhone">رقمك اللي حولتي منه *</label>
+<label style="font-size:12px;font-weight:700">رقمك اللي حولتي منه *</label>
 <input id="senderPhone" class="input-secure" placeholder="01xxxxxxxxx" oninput="validateForm()">
 <div class="err-msg" id="errPhone">لازم تكتبي رقمك</div>
 
-<label style="font-size:12px;font-weight:700" id="lblName">اسمك *</label>
+<label style="font-size:12px;font-weight:700">اسمك *</label>
 <input id="senderName" class="input-secure" placeholder="اسمك الكامل" oninput="validateForm()">
 <div class="err-msg" id="errName">لازم تكتبي اسمك</div>
 </div>
 
 <button class="btn-gold" id="btnWa" onclick="confirmAndDownload()" disabled>تأكيد الدفع وتحميل السيرة 💳⬇️</button>
-<p style="font-size:10px;color:#999;margin-top:8px" id="secureNote">🔒 سيتم حفظ رقم العملية للمراجعة في أنا فودافون</p>
-<button onclick="closePay()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer;font-size:13px" id="btnCancel1">رجوع</button>
+<p style="font-size:10px;color:#999;margin-top:8px">🔒 سيتم حفظ رقم العملية للمراجعة في أنا فودافون</p>
+<button onclick="closePay()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer;font-size:13px">رجوع</button>
 </div>
 </div>
 
 <script>
-let isAr=true;
-function toggleLang(){
-isAr=!isAr;
-document.documentElement.dir=isAr?'rtl':'ltr';
-document.getElementById('langBtn').innerText=isAr?'English 🇺🇸':'عربي 🇪🇬';
-document.getElementById('fTitle').innerText=isAr?'📝 بياناتك الشخصية':'📝 Your Info';
-document.getElementById('btnDown').innerText=isAr?'⬇️ تحميل النسخة الاحترافية':'⬇️ Download Pro Version';
-}
 function loadImg(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=x=>{cvImg.src=x.target.result;cvImg.style.display='block';};r.readAsDataURL(f);}
 function u(){
 cName.innerText=iName.value; cJob.innerText=iJob.value;
@@ -137,10 +127,11 @@ btnWa.disabled=!ok; return ok;
 }
 function confirmAndDownload(){
 if(!validateForm()) return;
+// نفس الرسالة اللي في الصورة + الأمان الإضافي
 const trx=encodeURIComponent(trxId.value.trim());
 const phone=encodeURIComponent(senderPhone.value.trim());
 const name=encodeURIComponent(senderName.value.trim());
-const msg=`تم دفع 100ج فودافون كاش على 01013724578%0A%0Aالاسم: ${name}%0Aرقمي: ${phone}%0Aرقم العملية: ${trx}%0A%0Aتم التحميل من SIRA`;
+const msg=`مرحبا جهاد، حولت 100 جنيه فودافون كاش على 01013724578 وعايزة كود تفعيل تحميل السي في%0A%0Aالاسم: ${name}%0Aرقمي: ${phone}%0Aرقم العملية: ${trx}`;
 window.open(`https://wa.me/201013724578?text=${msg}`,'_blank');
 setTimeout(()=>{closePay(); window.print();},900);
 }

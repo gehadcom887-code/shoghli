@@ -3,106 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIRA PRO - CV Maker</title>
+<title>SIRA PRO</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Cairo',sans-serif;background:#f2f4f7}
-.header{background:#111;color:white;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
-.container{max-width:1150px;margin:25px auto;display:grid;grid-template-columns:380px 1fr;gap:20px;padding:0 15px}
-.form-box{background:white;border-radius:16px;padding:22px;box-shadow:0 4px 12px #0001}
-.form-box h3{margin-bottom:15px}
-.form-box input,.form-box textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px}
-.preview-box{background:white;border-radius:16px;padding:10px;box-shadow:0 4px 12px #0001}
+.header{background:#111;color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.lang-btn{background:white;color:#111;border:none;padding:8px 16px;border-radius:20px;font-weight:700;cursor:pointer}
+.container{max-width:1150px;margin:20px auto;display:grid;grid-template-columns:380px 1fr;gap:20px;padding:0 15px}
+.form-box,.preview-box{background:white;border-radius:16px;padding:22px;box-shadow:0 4px 12px #0001}
+input,textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid #ddd;border-radius:10px;font-family:inherit}
+.btn-main{width:100%;padding:14px;background:#111;color:white;border:none;border-radius:12px;font-weight:800;cursor:pointer}
+.btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:white;border:none;border-radius:12px;font-weight:700;cursor:pointer}
 #cvPreview{padding:30px;border:1px solid #eee;min-height:600px;color:#222}
 .cv-top{display:flex;justify-content:space-between;border-bottom:3px solid #111;padding-bottom:15px;margin-bottom:15px}
-.cv-top h1{font-size:26px}
+.cv-top h1{font-size:26px;min-height:30px}
 #cvImg{width:85px;height:85px;border-radius:50%;object-fit:cover;display:none;border:2px solid #111}
-.cv-head{font-weight:700;font-size:13px;margin-bottom:6px;color:#111}
-.cv-text{font-size:12.5px;white-space:pre-wrap;line-height:1.7}
+.cv-head{font-weight:700;font-size:13px;margin-bottom:6px}
+.cv-text{font-size:12.5px;white-space:pre-wrap;line-height:1.7;min-height:15px}
 .layout{display:grid;grid-template-columns:120px 1fr;gap:15px;margin-top:10px}
-.btn-main{width:100%;padding:15px;background:#111;color:white;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:16px;margin-top:10px}
-.btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:white;border:none;border-radius:12px;font-weight:700;cursor:pointer}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(5px);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
 .modal.show{display:flex}
-.modal-box{background:white;padding:28px;border-radius:20px;max-width:380px;width:100%;text-align:center}
-.badge{background:#eef4ff;color:#1a73e8;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:12px}
+.modal-box{background:white;padding:28px;border-radius:20px;max-width:400px;width:100%;text-align:center}
+.badge{background:#eef4ff;color:#1a73e8;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:10px}
 .vf-box{background:#fff5f6;border:1.5px dashed #e11d48;border-radius:12px;padding:16px;margin:16px 0}
+.code-input{letter-spacing:4px;text-align:center;font-size:20px;font-weight:800}
+.hidden{display:none}
 @media print{.header,.form-box,.modal{display:none!important}.container{display:block;margin:0;padding:0}.preview-box{box-shadow:none;border:none}}
 @media(max-width:900px){.container{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<div class="header"><b>SIRA PRO ✨</b><span style="font-size:12px;opacity:.7">صانع السيرة الذاتية</span></div>
-
-<div class="container">
-  <!-- ده الفورم اللي الشخص هيملاه -->
-  <div class="form-box">
-    <h3>📝 بياناتك الشخصية</h3>
-    <input type="file" accept="image/*" onchange="loadImg(event)" style="background:#f9f9f9">
-    <input id="iName" placeholder="الاسم الكامل" oninput="u()">
-    <input id="iJob" placeholder="المسمى الوظيفي - مثلاً محاسب" oninput="u()">
-    <input id="iPhone" placeholder="رقم الهاتف" oninput="u()">
-    <input id="iEmail" placeholder="البريد الإلكتروني" oninput="u()">
-    <input id="iAddress" placeholder="العنوان" oninput="u()">
-    <textarea id="iAbout" rows="3" placeholder="نبذة عنك" oninput="u()"></textarea>
-    <textarea id="iExp" rows="4" placeholder="الخبرات العملية" oninput="u()"></textarea>
-    <textarea id="iEdu" rows="3" placeholder="المؤهل الدراسي" oninput="u()"></textarea>
-    <textarea id="iCourses" rows="3" placeholder="الكورسات والمهارات" oninput="u()"></textarea>
-    <button class="btn-main" onclick="openPay()">⬇️ تحميل النسخة الاحترافية</button>
-    <p style="font-size:11px;color:#888;text-align:center;margin-top:8px">معاينة مباشرة على اليمين 👉</p>
-  </div>
-
-  <!-- ده شكل الـ CV اللي بيظهر -->
-  <div class="preview-box">
-    <div id="cvPreview">
-      <div class="cv-top">
-        <div>
-          <h1 id="cName">جهاد محمد</h1>
-          <div id="cJob" style="color:#666">تجارة</div>
-          <div class="layout">
-            <div style="border-left:1px solid #eee;padding-left:10px"><div id="cContact" style="font-size:11px;line-height:2.2"></div></div>
-            <div><div class="cv-head">النبذة</div><div id="cAbout" class="cv-text">اكتب نبذة عنك هنا</div></div>
-          </div>
-        </div>
-        <img id="cvImg">
-      </div>
-      <div style="margin-top:15px"><div class="cv-head">الخبرات</div><div id="cExp" class="cv-text"></div></div>
-      <div style="margin-top:15px"><div class="cv-head">التعليم</div><div id="cEdu" class="cv-text"></div></div>
-      <div style="margin-top:15px"><div class="cv-head">الكورسات</div><div id="cCourses" class="cv-text"></div></div>
-    </div>
-  </div>
+<div class="header">
+<b id="hLogo">SIRA PRO ✨</b>
+<button class="lang-btn" onclick="toggleLang()" id="langBtn">English 🇺🇸</button>
 </div>
 
-<!-- بوابة الدفع - مش هتظهر غير لما يدوس تحميل -->
-<div id="payModal" class="modal" onclick="if(event.target==this)closePay()">
-  <div class="modal-box">
-    <div class="badge">✨ سيرتك جاهزة</div>
-    <h2 style="font-size:20px">فتح التحميل بجودة عالية</h2>
-    <p style="color:#666;font-size:13px;margin-top:8px;line-height:1.6">سيرتك الاحترافية جاهزة بصيغة PDF عالية الجودة، جاهزة للطباعة والإرسال للشركات</p>
-    <div class="vf-box">
-      <div style="font-size:12px;color:#666">الدفع الآمن عبر</div>
-      <div style="font-weight:800;color:#e11d48;font-size:18px">Vodafone Cash</div>
-      <div style="font-size:23px;font-weight:900;letter-spacing:1px;margin:4px 0">01013724578</div>
-      <div style="font-size:11px;color:#666">رسوم الخدمة: 100 جنيه • تفعيل فوري</div>
-    </div>
-    <button class="btn-gold" onclick="window.open('https://wa.me/201013724578?text=مرحبا، عايزة افتح التحميل بجودة عالية - حولت 100 جنيه فودافون كاش على 01013724578','_blank')">تأكيد التحويل عبر واتساب 💬</button>
-    <button class="btn-main" onclick="confirmPay()" style="background:#f1f1f1;color:#111;border:1px solid #ddd;margin-top:10px">تم التحويل - فتح التحميل الآن ✅</button>
-    <button onclick="closePay()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer">إلغاء والرجوع</button>
-  </div>
+<div class="container">
+<div class="form-box">
+<h3 id="fTitle">📝 بياناتك الشخصية</h3>
+<input type="file" accept="image/*" onchange="loadImg(event)">
+<input id="iName" placeholder="الاسم الكامل" oninput="u()">
+<input id="iJob" placeholder="المسمى الوظيفي" oninput="u()">
+<input id="iPhone" placeholder="رقم الهاتف" oninput="u()">
+<input id="iEmail" placeholder="البريد الإلكتروني" oninput="u()">
+<input id="iAddress" placeholder="العنوان" oninput="u()">
+<textarea id="iAbout" rows="3" placeholder="نبذة عنك" oninput="u()"></textarea>
+<textarea id="iExp" rows="4" placeholder="الخبرات العملية" oninput="u()"></textarea>
+<textarea id="iEdu" rows="3" placeholder="المؤهل الدراسي" oninput="u()"></textarea>
+<textarea id="iCourses" rows="3" placeholder="الكورسات والمهارات" oninput="u()"></textarea>
+<button class="btn-main" id="btnDown" onclick="openPay()">⬇️ تحميل النسخة الاحترافية</button>
+</div>
+
+<div class="preview-box">
+<div id="cvPreview">
+<div class="cv-top">
+<div>
+<h1 id="cName"></h1>
+<div id="cJob" style="color:#666"></div>
+<div class="layout">
+<div style="border-left:1px solid #eee;padding-left:10px"><div id="cContact" style="font-size:11px;line-height:2.2"></div></div>
+<div><div class="cv-head" id="lAbout">النبذة</div><div id="cAbout" class="cv-text"></div></div>
+</div>
+</div>
+<img id="cvImg">
+</div>
+<div style="margin-top:15px"><div class="cv-head" id="lExp">الخبرات</div><div id="cExp" class="cv-text"></div></div>
+<div style="margin-top:15px"><div class="cv-head" id="lEdu">التعليم</div><div id="cEdu" class="cv-text"></div></div>
+<div style="margin-top:15px"><div class="cv-head" id="lCourses">الكورسات</div><div id="cCourses" class="cv-text"></div></div>
+</div>
+</div>
+</div>
+
+<!-- بوابة الدفع -->
+<div id="payModal" class="modal">
+<div class="modal-box" id="step1">
+<div class="badge" id="badge1">✨ سيرتك جاهزة</div>
+<h2 id="payTitle1">فتح التحميل بجودة عالية</h2>
+<p id="payDesc1" style="color:#666;font-size:13px;margin-top:8px;line-height:1.6">سيرتك الاحترافية جاهزة بصيغة PDF عالية الجودة، جاهزة للطباعة والإرسال</p>
+<div class="vf-box">
+<div style="font-size:12px;color:#666" id="payVia">الدفع الآمن عبر</div>
+<div style="font-weight:800;color:#e11d48;font-size:18px">Vodafone Cash</div>
+<div style="font-size:23px;font-weight:900">01013724578</div>
+<div style="font-size:11px;color:#666;margin-top:4px" id="payFee">رسوم الخدمة: 100 جنيه • تفعيل فوري</div>
+</div>
+<button class="btn-gold" id="btnWa" onclick="goStep2()">تأكيد التحويل عبر واتساب 💬</button>
+<p style="font-size:11px;color:#999;margin-top:10px" id="payNote">بعد التحويل، اضغطي لتأكيد الدفع</p>
+<button onclick="closePay()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer" id="btnCancel1">رجوع</button>
+</div>
+
+<div class="modal-box hidden" id="step2">
+<div class="badge">🔒 تأكيد الدفع</div>
+<h2 id="codeTitle">ادخلي كود التفعيل</h2>
+<p id="codeDesc" style="color:#666;font-size:13px;margin:10px 0;line-height:1.6">بعد ما تبعتي سكرين التحويل على واتساب، جهاد هتبعتلك كود تفعيل مكون من 4 أرقام. دخليه هنا لفتح التحميل.</p>
+<input id="codeInput" class="code-input" placeholder="0000" maxlength="4">
+<p id="codeError" style="color:#e11d48;font-size:12px;margin-top:8px;display:none">الكود غلط، اتأكدي من واتساب</p>
+<button class="btn-main" id="btnVerify" onclick="verifyCode()">تفعيل وتحميل الآن ✅</button>
+<button onclick="backStep1()" style="margin-top:10px;background:none;border:none;color:#999;cursor:pointer" id="btnBack">رجوع</button>
+</div>
 </div>
 
 <script>
-function openPay(){document.getElementById('payModal').classList.add('show')}
-function closePay(){document.getElementById('payModal').classList.remove('show')}
-function confirmPay(){closePay(); setTimeout(()=>window.print(),300)}
+let isAr=true;
+const T={
+ar:{logo:'SIRA PRO ✨',en:'English 🇺🇸',fTitle:'📝 بياناتك الشخصية',n:'الاسم الكامل',j:'المسمى الوظيفي',p:'رقم الهاتف',e:'البريد الإلكتروني',a:'العنوان',ab:'نبذة عنك',ex:'الخبرات العملية',ed:'المؤهل الدراسي',co:'الكورسات والمهارات',btnDown:'⬇️ تحميل النسخة الاحترافية',lAbout:'النبذة',lExp:'الخبرات',lEdu:'التعليم',lCourses:'الكورسات',payTitle:'فتح التحميل بجودة عالية',payDesc:'سيرتك الاحترافية جاهزة بصيغة PDF عالية الجودة، جاهزة للطباعة والإرسال',via:'الدفع الآمن عبر',fee:'رسوم الخدمة: 100 جنيه • تفعيل فوري',wa:'تأكيد التحويل عبر واتساب 💬',note:'بعد التحويل، اضغطي لتأكيد الدفع',cancel:'رجوع',codeTitle:'ادخلي كود التفعيل',codeDesc:'بعد ما تبعتي سكرين التحويل على واتساب، جهاد هتبعتلك كود تفعيل مكون من 4 أرقام. دخليه هنا لفتح التحميل.',verify:'تفعيل وتحميل الآن ✅',back:'رجوع',error:'الكود غلط، اتأكدي من واتساب'},
+en:{logo:'SIRA PRO ✨',en:'عربي 🇪🇬',fTitle:'📝 Your Information',n:'Full Name',j:'Job Title',p:'Phone Number',e:'Email',a:'Address',ab:'About You',ex:'Work Experience',ed:'Education',co:'Courses & Skills',btnDown:'⬇️ Download Pro Version',lAbout:'Summary',lExp:'Experience',lEdu:'Education',lCourses:'Courses',payTitle:'Unlock High-Quality Download',payDesc:'Your professional CV is ready in high-quality PDF format, ready to print and send',via:'Secure Payment via',fee:'Service fee: 100 EGP • Instant activation',wa:'Confirm via WhatsApp 💬',note:'After payment, click to confirm',cancel:'Back',codeTitle:'Enter Activation Code',codeDesc:'After sending payment screenshot on WhatsApp, Gehad will send you a 4-digit code. Enter it here to unlock download.',verify:'Activate & Download Now ✅',back:'Back',error:'Wrong code, check WhatsApp'}
+};
+function toggleLang(){
+isAr=!isAr; const t=isAr?T.ar:T.en;
+document.documentElement.dir=isAr?'rtl':'ltr'; document.documentElement.lang=isAr?'ar':'en';
+document.body.style.fontFamily=isAr?"'Cairo',sans-serif":"'Inter',sans-serif";
+hLogo.innerText=t.logo; langBtn.innerText=t.en; fTitle.innerText=t.fTitle;
+iName.placeholder=t.n; iJob.placeholder=t.j; iPhone.placeholder=t.p; iEmail.placeholder=t.e; iAddress.placeholder=t.a;
+iAbout.placeholder=t.ab; iExp.placeholder=t.ex; iEdu.placeholder=t.ed; iCourses.placeholder=t.co;
+btnDown.innerText=t.btnDown; lAbout.innerText=t.lAbout; lExp.innerText=t.lExp; lEdu.innerText=t.lEdu; lCourses.innerText=t.lCourses;
+payTitle1.innerText=t.payTitle; payDesc1.innerText=t.payDesc; payVia.innerText=t.via; payFee.innerText=t.fee; btnWa.innerText=t.wa; payNote.innerText=t.note; btnCancel1.innerText=t.cancel;
+codeTitle.innerText=t.codeTitle; codeDesc.innerText=t.codeDesc; btnVerify.innerText=t.verify; btnBack.innerText=t.back; codeError.innerText=t.error;
+}
 function loadImg(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=x=>{cvImg.src=x.target.result;cvImg.style.display='block';};r.readAsDataURL(f);}
 function u(){
-  cName.innerText=iName.value||'جهاد محمد'; cJob.innerText=iJob.value||'تجارة';
-  let h=''; if(iPhone.value) h+=`📞 ${iPhone.value}<br>`; if(iEmail.value) h+=`✉️ ${iEmail.value}<br>`; if(iAddress.value) h+=`📍 ${iAddress.value}`;
-  cContact.innerHTML=h;
-  cAbout.innerText=iAbout.value||'اكتب نبذة عنك هنا'; cExp.innerText=iExp.value; cEdu.innerText=iEdu.value; cCourses.innerText=iCourses.value;
+cName.innerText=iName.value; cJob.innerText=iJob.value;
+let h=''; if(iPhone.value) h+=`📞 ${iPhone.value}<br>`; if(iEmail.value) h+=`✉️ ${iEmail.value}<br>`; if(iAddress.value) h+=`📍 ${iAddress.value}`;
+cContact.innerHTML=h; cAbout.innerText=iAbout.value; cExp.innerText=iExp.value; cEdu.innerText=iEdu.value; cCourses.innerText=iCourses.value;
+}
+function openPay(){document.getElementById('payModal').classList.add('show'); document.getElementById('step1').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden')}
+function closePay(){document.getElementById('payModal').classList.remove('show')}
+function goStep2(){
+window.open('https://wa.me/201013724578?text=مرحبا جهاد، حولت 100 جنيه فودافون كاش على 01013724578 وعايزة كود تفعيل تحميل السي في','_blank');
+document.getElementById('step1').classList.add('hidden');
+document.getElementById('step2').classList.remove('hidden');
+}
+function backStep1(){document.getElementById('step2').classList.add('hidden'); document.getElementById('step1').classList.remove('hidden')}
+function verifyCode(){
+const code=document.getElementById('codeInput').value.trim();
+// الكود اللي انتي بس اللي عارفاه - غيريه براحتك
+const SECRET_CODE="1010";
+if(code===SECRET_CODE){
+closePay(); setTimeout(()=>window.print(),400);
+}else{
+document.getElementById('codeError').style.display='block';
+}
 }
 u();
 </script>

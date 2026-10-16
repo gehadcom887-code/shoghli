@@ -2,86 +2,99 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#1a73e8">
-<title>سِيرة - SIRA</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIRA - سِيرة</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
-body{background:#f8f9fa;color:#202124}
-.header{height:58px;background:white;border-bottom:1px solid #dadce0;display:flex;align-items:center;padding:0 16px;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}
-.logo-icon{width:36px;height:36px;background:#1a73e8;border-radius:10px;display:grid;place-items:center;color:white}
-.main{max-width:900px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:16px}
-.left,.right{background:white;border-radius:16px;border:1px solid #dadce0;padding:16px;width:100%}
-.left{order:1}.right{order:2;min-height:500px}
-.field{margin-bottom:12px}.field label{font-size:12px;color:#5f6368;display:block;margin-bottom:5px;font-weight:600}
-.field input,.field textarea{width:100%;padding:14px;border:1.5px solid #dadce0;border-radius:12px;font-size:14px;outline:none;background:white}
-.upload{border:1.5px dashed #dadce0;border-radius:12px;padding:16px;text-align:center;cursor:pointer;display:block;background:#fafafa}
-.btn{width:100%;height:50px;border:none;border-radius:24px;background:#1a73e8;color:white;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px}
-.btn.sec{background:#f1f3f4;color:#202124}
-.doc{padding:24px;position:relative}.doc::after{content:'SIRA';position:absolute;top:40%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:70px;color:rgba(0,0,0,.05);font-weight:800;pointer-events:none}
-.doc-photo{width:90px;height:90px;border-radius:50%;object-fit:cover;display:none;margin:0 auto 14px;border:3px solid #e8f0fe}
-.doc h1{font-size:24px;font-weight:700;text-align:center}.doc h2{font-size:13px;color:#5f6368;text-align:center;margin:8px 0 12px}
-.doc hr{border:none;border-top:1px solid #e8eaed;margin:12px 0}.doc h3{font-size:12px;color:#1a73e8;font-weight:700;margin:16px 0 6px}.doc p{font-size:13px;line-height:1.8;white-space:pre-wrap}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;display:none;align-items:center;justify-content:center;padding:14px}
-.modal-box{background:white;border-radius:20px;padding:20px;max-width:400px;width:100%;max-height:92vh;overflow:auto}
-.input-modal{width:100%;padding:13px;border:1.5px solid #dadce0;border-radius:12px;margin:6px 0;font-size:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo',Tahoma,sans-serif;background:#f1f3f4}
+.header{background:white;padding:15px;text-align:center;box-shadow:0 1px 3px #ddd;position:sticky;top:0;z-index:10}
+.container{max-width:1100px;margin:20px auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 15px}
+@media(max-width:800px){.container{grid-template-columns:1fr}}
+.form-box,.preview-box{background:white;border-radius:12px;padding:20px;box-shadow:0 2px 10px #ddd}
+h3{margin-bottom:15px;color:#333}
+input,textarea{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ddd;border-radius:8px;font-family:inherit}
+textarea{resize:vertical}
+.btn{width:100%;padding:12px;background:#1a73e8;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer;margin-top:10px}
+/* شكل السيرة الجديد عمودين */
+#cvPreview{background:white;border:1px solid #eee;border-radius:8px;overflow:hidden;min-height:400px}
+.cv-header{background:#1a2a4a;color:white;padding:20px;text-align:center}
+.cv-header h2{font-size:22px;margin-bottom:5px}
+.cv-body{display:grid;grid-template-columns:180px 1fr;min-height:350px}
+.cv-side{background:#f8f9fa;padding:15px;border-left:1px solid #eee}
+.cv-main{padding:15px}
+.cv-section{margin-bottom:18px}
+.cv-section-title{font-weight:bold;color:#1a2a4a;border-bottom:2px solid #1a73e8;padding-bottom:4px;margin-bottom:8px;font-size:13px}
+.cv-contact div{font-size:11px;margin-bottom:6px;word-break:break-all;line-height:1.6}
+.small{font-size:12px;color:#555;line-height:1.7;white-space:pre-wrap}
 </style>
 </head>
 <body>
-<div class="header"><div class="logo"><div class="logo-icon">س</div> سِيرة - SIRA</div><div style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:4px 10px;border-radius:12px;font-weight:700">SIRA Pro • 100 جنيه</div></div>
-<div class="main">
-<div class="left">
-<div class="field"><label>📷 صورتك</label><label class="upload"><input type="file" id="pInput" hidden accept="image/*">اضغط لرفع الصورة</label></div>
-<div class="field"><label>الاسم الكامل</label><input id="iName" placeholder="مثال: جهاد أحمد" oninput="upd()"></div>
-<div class="field"><label>المسمى الوظيفي</label><input id="iJob" placeholder="مثال: محاسبة" oninput="upd()"></div>
-<div class="field"><label>الهاتف</label><input id="iPhone" placeholder="01xxxxxxxxx" oninput="upd()"></div>
-<div class="field"><label>البريد</label><input id="iEmail" placeholder="example@mail.com" oninput="upd()"></div>
-<div class="field"><label>نبذة عنك</label><textarea id="iAbout" rows="3" oninput="upd()"></textarea></div>
-<div class="field"><label>المهارات</label><textarea id="iSkills" rows="2" oninput="upd()"></textarea></div>
-<div class="field"><label>الخبرات</label><textarea id="iExp" rows="3" oninput="upd()"></textarea></div>
-<button class="btn" onclick="openPay()">📥 تحميل السيرة الاحترافية</button>
-<button class="btn sec" onclick="clearAll()">مسح البيانات</button>
+<div class="header"><b>سِيرة - SIRA</b> | منشئ السيرة الذاتية</div>
+<div class="container">
+<div class="form-box">
+<h3>بياناتك</h3>
+<input id="iName" placeholder="الاسم الكامل - سيظهر كبير فوق" oninput="updateCV()">
+<input id="iPhone" placeholder="رقم التليفون" oninput="updateCV()">
+<input id="iEmail" placeholder="الايميل" oninput="updateCV()">
+<textarea id="iAbout" rows="3" placeholder="النبذة التعريفية" oninput="updateCV()"></textarea>
+<textarea id="iExp" rows="4" placeholder="الخبرات - كل خبرة في سطر" oninput="updateCV()"></textarea>
+<textarea id="iEdu" rows="3" placeholder="التعليم" oninput="updateCV()"></textarea>
+<textarea id="iCourses" rows="3" placeholder="الكورسات" oninput="updateCV()"></textarea>
+<button class="btn" onclick="window.print()">تحميل PDF</button>
 </div>
-<div class="right">
-<div style="font-size:12px;color:#5f6368;margin-bottom:10px;text-align:center">👁️ معاينة مباشرة</div>
-<div id="cv" class="doc">
-<img id="cvPhoto" class="doc-photo">
-<h1 id="cvName">سيظهر اسمك هنا</h1>
-<h2 id="cvJob">المسمى الوظيفي</h2>
-<div id="cvContact" style="text-align:center;font-size:12px;color:#5f6368">بيانات التواصل</div>
-<hr>
-<h3>نبذة</h3><p id="cvAbout">...</p>
-<h3>المهارات</h3><p id="cvSkills">...</p>
-<h3>الخبرات</h3><p id="cvExp">...</p>
+<div class="preview-box">
+<div style="text-align:center;margin-bottom:10px;color:#666;font-size:13px">معاينة مباشرة - عمودين</div>
+<div id="cvPreview">
+  <div class="cv-header">
+    <h2 id="cvName">اسمك هنا</h2>
+    <div style="font-size:12px;opacity:0.9">المسمى الوظيفي</div>
+  </div>
+  <div class="cv-body">
+    <div class="cv-side">
+      <div class="cv-section">
+        <div class="cv-section-title">تواصل</div>
+        <div id="cvContact" class="cv-contact">بيانات التواصل</div>
+      </div>
+      <div class="cv-section">
+        <div class="cv-section-title">مهارات</div>
+        <div class="small">تضاف تلقائيا</div>
+      </div>
+    </div>
+    <div class="cv-main">
+      <div class="cv-section">
+        <div class="cv-section-title">النبذة</div>
+        <div id="cvAbout" class="small">النبذة ستظهر هنا</div>
+      </div>
+      <div class="cv-section">
+        <div class="cv-section-title">الخبرات</div>
+        <div id="cvExp" class="small">الخبرات</div>
+      </div>
+      <div class="cv-section">
+        <div class="cv-section-title">التعليم</div>
+        <div id="cvEdu" class="small">التعليم</div>
+      </div>
+      <div class="cv-section">
+        <div class="cv-section-title">الكورسات</div>
+        <div id="cvCourses" class="small">الكورسات</div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<div id="payModal" class="modal">
-<div class="modal-box">
-<div style="text-align:center"><div style="font-size:40px">✨</div><h3>ترقية إلى SIRA Pro</h3></div>
-<div style="background:#f8f9fa;border-radius:12px;padding:12px;margin:12px 0">
-<p style="font-size:12px"><b>خطوات التفعيل:</b><br>1- حولي 100 جنيه فودافون كاش على:<br><span style="font-size:18px;font-weight:800;color:#1a73e8">01013724578</span><br>2- انسخي رقم العملية<br>3- املي البيانات</p>
-</div>
-<input id="transId" class="input-modal" placeholder="رقم العملية">
-<input id="senderPhone" class="input-modal" placeholder="رقمك اللي حولتي منه">
-<input id="clientNameModal" class="input-modal" placeholder="اسمك في السيرة">
-<a id="waLink" href="#" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;background:#25D366;color:white;border-radius:24px;text-decoration:none;font-weight:700;margin-top:12px">📱 تفعيل واتساب</a>
-<div style="margin-top:14px;border-top:1px solid #eee;padding-top:10px">
-<button onclick="downloadFree()" style="width:100%;height:42px;border:1px solid #dadce0;border-radius:24px;background:white;cursor:pointer">تحميل مجاني بعلامة مائية</button>
-<button onclick="document.getElementById('payModal').style.display='none'" style="width:100%;border:none;background:none;color:#5f6368;margin-top:8px;cursor:pointer">إغلاق</button>
 </div>
 </div>
 </div>
 <script>
-function upd(){document.getElementById('cvName').innerText=document.getElementById('iName').value||'سيظهر اسمك هنا';document.getElementById('cvJob').innerText=document.getElementById('iJob').value||'المسمى الوظيفي';let c=[];if(document.getElementById('iPhone').value)c.push(document.getElementById('iPhone').value);if(document.getElementById('iEmail').value)c.push(document.getElementById('iEmail').value);document.getElementById('cvContact').innerText=c.length?c.join(' • '):'بيانات التواصل';document.getElementById('cvAbout').innerText=document.getElementById('iAbout').value||'...';document.getElementById('cvSkills').innerText=document.getElementById('iSkills').value||'...';document.getElementById('cvExp').innerText=document.getElementById('iExp').value||'...';if(document.getElementById('iName').value)document.getElementById('clientNameModal').value=document.getElementById('iName').value;}
-document.getElementById('pInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=document.getElementById('cvPhoto');img.src=ev.target.result;img.style.display='block';};r.readAsDataURL(f);});
-function clearAll(){document.querySelectorAll('.left input,.left textarea').forEach(el=>{if(el.type!='file')el.value='';});document.getElementById('cvPhoto').style.display='none';upd();}
-function openPay(){upd();document.getElementById('payModal').style.display='flex';}
-document.getElementById('waLink').addEventListener('click',function(e){const trans=document.getElementById('transId').value.trim();const sender=document.getElementById('senderPhone').value.trim();const name=document.getElementById('clientNameModal').value.trim()||document.getElementById('iName').value||'عميل';if(!trans){alert('اكتبي رقم العملية');e.preventDefault();return;}if(!sender){alert('اكتبي الرقم اللي حولتي منه');e.preventDefault();return;}const msg=encodeURIComponent(`مرحبا SIRA Pro ✨%0Aتم تحويل 100 جنيه%0Aالاسم: ${name}%0Aالرقم: ${sender}%0Aرقم العملية: ${trans}`);this.href=`https://wa.me/201013724578?text=${msg}`;});
-function downloadFree(){document.getElementById('payModal').style.display='none';const el=document.getElementById('cv');html2pdf().set({margin:0.3,filename:'SIRA-Free.pdf',image:{type:'jpeg',quality:0.98},html2canvas:{scale:2},jsPDF:{unit:'in',format:'a4'}}).from(el).save();}
+function updateCV(){
+ document.getElementById('cvName').innerText=document.getElementById('iName').value||'اسمك هنا';
+ let html='';
+ if(document.getElementById('iPhone').value) html+=`<div>📞 ${document.getElementById('iPhone').value}</div>`;
+ if(document.getElementById('iEmail').value) html+=`<div>✉️ ${document.getElementById('iEmail').value}</div>`;
+ document.getElementById('cvContact').innerHTML=html||'بيانات التواصل';
+ document.getElementById('cvAbout').innerText=document.getElementById('iAbout').value||'النبذة ستظهر هنا';
+ document.getElementById('cvExp').innerText=document.getElementById('iExp').value||'الخبرات';
+ document.getElementById('cvEdu').innerText=document.getElementById('iEdu').value||'التعليم';
+ document.getElementById('cvCourses').innerText=document.getElementById('iCourses').value||'الكورسات';
+}
 </script>
 </body>
 </html>

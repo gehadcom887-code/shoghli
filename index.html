@@ -1,198 +1,85 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="EYK42EIJKOYrfKOHRoF_IPKBgfDe-8tBOXa1KWg_XNS" />
-    <title>شغلي - صانع السيرة الذاتية الاحترافية CV Maker | اعمل سي في مجانا</title>
-    <meta name="description"
-        content="اعمل سي في احترافي في 5 دقايق. صانع السيرة الذاتية  - اضف بريدك ورقمك وجنسيتك وكورساتك وحملي PDF جاهز. تحميل عادي 50ج و VIP ملون 100ج.">
-    <meta name="keywords"
-        content="اعمل سي في, صانع السيرة الذاتية, CV maker, عمل سيرة ذاتية, سي في احترافي, تحميل سي في PDF, شغلي">
-    <meta name="author" content="شغلي">
-    <meta property="og:title" content="شغلي - اعملي سي في احترافي ب 50 جنيه بس">
-    <meta property="og:description"
-        content="صانع السيرة الذاتية الاحترافية للبنات. بريد، رقم، جنسية، كورسات، خبرات - حملي PDF في ثانية">
-    <meta property="og:type" content="website">
-
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Cairo', sans-serif;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        body {
-            background: #eef2ff;
-            padding: 20px
-        }
-
-        h1 {
-            text-align: center;
-            color: #4f46e5;
-            margin-bottom: 5px
-        }
-
-        h1+p {
-            text-align: center;
-            color: #6b7280;
-            margin-bottom: 20px;
-            font-size: 13px
-        }
-
-        .container {
-            display: flex;
-            gap: 20px;
-            max-width: 1100px;
-            margin: auto;
-            flex-wrap: wrap
-        }
-
-        .form-box,
-        .preview-box {
-            background: #fff;
-            border-radius: 16px;
-            padding: 20px;
-            flex: 1;
-            min-width: 320px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, .06)
-        }
-
-        label {
-            font-weight: 700;
-            display: block;
-            margin-top: 10px;
-            margin-bottom: 3px;
-            font-size: 13px
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 9px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            margin-bottom: 4px;
-            font-size: 13px
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 800;
-            margin-top: 8px;
-            cursor: pointer;
-            font-size: 13px
-        }
-
-        .main {
-            background: #4f46e5;
-            color: #fff
-        }
-
-        .gold {
-            background: linear-gradient(135deg, #f59e0b, #fbbf24)
-        }
-
-        .vip {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            color: #fff
-        }
-
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .6);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 99
-        }
-
-        .modal.active {
-            display: flex
-        }
-
-        .modal-box {
-            background: #fff;
-            padding: 20px;
-            border-radius: 16px;
-            max-width: 380px;
-            width: 90%;
-            text-align: center
-        }
-
-        .preview-item {
-            margin: 6px 0;
-            font-size: 13px
-        }
-
-        .cash {
-            font-size: 22px;
-            font-weight: 800;
-            color: #4f46e5
-        }
-    </style>
-    <script>
-        const MY_CASH_NUMBER = "01013724578";
-        const MY_WA_NUMBER = "201013724578";
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شغلي - CV احترافي</title>
+<style>
+*{box-sizing:border-box;font-family:Tahoma,sans-serif}
+body{background:#f5f7fa;margin:0;padding:15px}
+header{text-align:center;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:white;padding:25px;border-radius:15px}
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media(max-width:800px){.builder{grid-template-columns:1fr}}
+.form{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
+.form input,.form textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
+button{width:100%;padding:12px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:10px}
+.previewBtn{background:#dfe6e9}
+.download{background:#00b894;color:white}
+.cv{background:white;padding:25px;border-radius:12px;min-height:500px;position:relative}
+#watermark{position:absolute;bottom:40%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:32px;color:rgba(0,0,0,0.08)}
+#pay-section{display:none;margin-top:15px}
+.pay-box{background:#fff8e1;border:2px dashed #fdcb6e;padding:20px;border-radius:12px;text-align:center}
+.price{font-size:26px;font-weight:bold;color:#e17055}
+.num{background:#2d3436;color:white;padding:10px;border-radius:8px;font-size:20px;margin:10px 0;letter-spacing:2px}
+</style>
 </head>
-
 <body>
-    <h1>شغلي - صانع السيرة الذاتية</h1>
-    <p>اعملي سي في احترافي في 5 دقايق وحمليه PDF</p>
-    <div class="container">
-        <div class="form-box">
-            <label>الاسم الكامل</label><input id="name" oninput="updateCV()">
-            <label>المسمى الوظيفي</label><input id="job" oninput="updateCV()">
-            <label>البريد</label><input id="email" oninput="updateCV()">
-            <label>رقم التليفون</label><input id="phone" oninput="updateCV()">
-            <label>الجنسية</label><input id="nation" oninput="updateCV()">
-            <label>العنوان</label><input id="address" oninput="updateCV()">
-            <label>نبذة</label><textarea id="about" oninput="updateCV()"></textarea>
-            <label>الخبرات</label><textarea id="exp" oninput="updateCV()"></textarea>
-            <label>التعليم</label><input id="edu" oninput="updateCV()">
-            <label>الكورسات 📜</label><textarea id="courses" oninput="updateCV()"></textarea>
-            <label>المهارات</label><input id="skills" oninput="updateCV()">
-            <button class="main" onclick="window.print()">👁️ معاينة مجانية</button>
-            <button class="gold" onclick="openPay(50)">⬇️ تحميل عادي - 50ج</button>
-            <button class="vip" onclick="openPay(100)">👑 تحميل VIP - 100ج</button>
-        </div>
-        <div class="preview-box">
-            <h2 id="p-name" style="color:#4f46e5;border-bottom:2px solid #e0e7ff;padding-bottom:6px">اسمك هنا</h2>
-            <div id="p-job" style="color:#6b7280;font-weight:700;margin:8px 0"></div>
-            <div class="preview-item">📧 <span id="p-email">-</span> | 📱 <span id="p-phone">-</span></div>
-            <div class="preview-item">🌍 <span id="p-nation">-</span> | 📍 <span id="p-address">-</span></div>
-            <hr style="margin:10px 0;border-top:1px solid #eee">
-            <div class="preview-item"><b>نبذة:</b> <span id="p-about">-</span></div>
-            <div class="preview-item"><b>الخبرات:</b> <span id="p-exp">-</span></div>
-            <div class="preview-item"><b>التعليم:</b> <span id="p-edu">-</span></div>
-            <div class="preview-item" style="background:#fef9c3;padding:8px;border-radius:8px"><b>📜 الكورسات:</b> <span
-                    id="p-courses">-</span></div>
-            <div class="preview-item"><b>المهارات:</b> <span id="p-skills">-</span></div>
-        </div>
-    </div>
-    <div class="modal" id="payModal">
-        <div class="modal-box">
-            <h2>الدفع</h2>
-            <p>حولي <span id="mAmount">50</span>ج على</p>
-            <p class="cash">01013724578</p><a id="mWA" href="#" target="_blank"
-                style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-top:10px">واتساب
-                ✅</a><button class="main" onclick="window.print();closePay()">حولت؟ حملي</button>
-            <div onclick="closePay()" style="margin-top:8px;color:#999;cursor:pointer">اغلاق</div>
-        </div>
-    </div>
-    <script>
-        function updateCV() { document.getElementById('p-name').innerText = document.getElementById('name').value || 'اسمك هنا'; document.getElementById('p-job').innerText = document.getElementById('job').value; document.getElementById('p-email').innerText = document.getElementById('email').value || '-'; document.getElementById('p-phone').innerText = document.getElementById('phone').value || '-'; document.getElementById('p-nation').innerText = document.getElementById('nation').value || '-'; document.getElementById('p-address').innerText = document.getElementById('address').value || '-'; document.getElementById('p-about').innerText = document.getElementById('about').value || '-'; document.getElementById('p-exp').innerText = document.getElementById('exp').value || '-'; document.getElementById('p-edu').innerText = document.getElementById('edu').value || '-'; document.getElementById('p-courses').innerText = document.getElementById('courses').value || '-'; document.getElementById('p-skills').innerText = document.getElementById('skills').value || '-'; }
-        function openPay(p) { document.getElementById('mAmount').innerText = p; document.getElementById('mWA').href = "https://wa.me/201013724578?text=حولت " + p + "ج"; document.getElementById('payModal').classList.add('active'); }
-        function closePay() { document.getElementById('payModal').classList.remove('active') }
-    </script>
-</body>
+<header>
+<h1>شغلي - صانع السيرة الذاتية</h1>
+<p>اعملي CV احترافي في 5 دقايق</p>
+</header>
 
+<div class="builder">
+<div class="form">
+<h3>بياناتك</h3>
+<input id="name" placeholder="الاسم الكامل">
+<input id="title" placeholder="المسمى الوظيفي">
+<input id="phone" placeholder="الموبايل">
+<textarea id="about" placeholder="نبذة عنك"></textarea>
+<textarea id="skills" placeholder="المهارات"></textarea>
+<textarea id="exp" placeholder="الخبرات"></textarea>
+
+<button class="previewBtn" onclick="updatePreview()">معاينة</button>
+<button class="download" onclick="handleDownload()">تحميل PDF مجاني</button>
+
+<div id="pay-section">
+<div class="pay-box">
+<h3>🔒 عايزة النسخة الاحترافية؟</h3>
+<p>النسخة المجانية فيها علامة مائية</p>
+<div class="price">30 جنيه فقط</div>
+<p>حولي على فودافون كاش:</p>
+<div class="num">01013724578</div>
+<p style="font-size:12px;color:#636e72">بعد التحويل ابعتي سكرين شوت على نفس الرقم وهنبعتلك كود التفعيل</p>
+<button onclick="alert('بعد ما تحولي على 01013724578 ابعتي رسالة بالاسم وهنفعل التحميل الاحترافي ليكي')" style="background:#e84393;color:white">لقد حولت - اطلب التفعيل</button>
+</div>
+</div>
+</div>
+
+<div class="cv" id="cvPreview">
+<h2 id="p-name">الاسم</h2>
+<h4 id="p-title">المسمى الوظيفي</h4>
+<p id="p-about"></p>
+<p id="p-skills"></p>
+<p id="p-exp"></p>
+<div id="watermark">Shoghli - مجاني</div>
+</div>
+</div>
+
+<script>
+function updatePreview(){
+document.getElementById('p-name').innerText=document.getElementById('name').value||'الاسم';
+document.getElementById('p-title').innerText=document.getElementById('title').value||'المسمى الوظيفي';
+document.getElementById('p-about').innerText=document.getElementById('about').value;
+document.getElementById('p-skills').innerText=document.getElementById('skills').value;
+document.getElementById('p-exp').innerText=document.getElementById('exp').value;
+}
+function handleDownload(){
+updatePreview();
+// هنا بيظهر قسم الدفع بس لما يدوس تحميل
+document.getElementById('pay-section').style.display='block';
+document.getElementById('pay-section').scrollIntoView({behavior:'smooth'});
+alert('تم تحميل النسخة المجانية - لو عايزة بدون علامة مائية حولي على 01013724578');
+}
+</script>
+</body>
 </html>

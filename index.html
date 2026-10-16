@@ -3,189 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIRA - سِيرة | قوالب احترافية</title>
+<title>SIRA - سِيرة</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Cairo',sans-serif;background:#f4f5f7}
 .header{background:#111;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
-.lang-btn{background:#fff;color:#111;border:none;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;font-size:13px}
-.container{max-width:1300px;margin:20px auto;display:grid;grid-template-columns:320px 1fr 280px;gap:18px;padding:0 15px}
-.form-box,.preview-box,.templates-box{background:#fff;border-radius:18px;padding:18px;box-shadow:0 6px 20px #0001}
+.lang-btn{background:#fff;color:#111;border:none;padding:8px 16px;border-radius:20px;font-weight:800;cursor:pointer}
+.container{max-width:1150px;margin:20px auto;display:grid;grid-template-columns:380px 1fr;gap:20px;padding:0 15px}
+.form-box,.preview-box{background:#fff;border-radius:18px;padding:22px;box-shadow:0 6px 20px #0001}
 .form-box input,.form-box textarea{width:100%;padding:11px;margin-bottom:8px;border:1px solid #ddd;border-radius:10px;font-family:inherit;font-size:13px}
+.small-label{font-size:11px;font-weight:800;color:#555;margin-bottom:3px;display:block;text-align:right}
 .btn-main{width:100%;padding:14px;background:#111;color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer}
-#cvPreview{padding:28px;border:1px solid #eee;min-height:650px;background:#fff;color:#222;transition:.3s}
-.cv-top{display:flex;justify-content:space-between;border-bottom:3px solid #111;padding-bottom:12px;margin-bottom:12px}
-#cvImg{width:75px;height:75px;border-radius:50%;object-fit:cover;display:none;border:2px solid #111}
+#cvPreview{padding:32px;border:1px solid #eee;min-height:620px;background:#fff;color:#222}
+.cv-top{display:flex;justify-content:space-between;border-bottom:3px solid #111;padding-bottom:15px;margin-bottom:15px}
+#cvImg{width:85px;height:85px;border-radius:50%;object-fit:cover;display:none;border:2px solid #111}
 .cv-head{font-weight:800;font-size:12px;margin-bottom:5px}
-.cv-text{font-size:11.5px;white-space:pre-wrap;line-height:1.7}
-.layout{display:grid;grid-template-columns:110px 1fr;gap:12px;margin-top:8px}
-
-/* قوالب */
-.t-title{font-weight:900;font-size:14px;margin-bottom:12px;display:flex;justify-content:space-between}
-.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.t-card{border:2px solid #eee;border-radius:12px;overflow:hidden;cursor:pointer;position:relative;transition:.2s}
-.t-card:hover{border-color:#111;transform:translateY(-2px)}
-.t-card.active{border-color:#1a73e8;box-shadow:0 0 0 3px #1a73e830}
-.t-thumb{height:90px;background:#f9f9f9;display:flex;align-items:center;justify-content:center;font-size:22px}
-.t-name{padding:6px;font-size:11px;font-weight:700;text-align:center;background:#fff}
-.t-badge{position:absolute;top:6px;right:6px;background:#111;color:#fff;font-size:8px;font-weight:800;padding:3px 6px;border-radius:10px}
-.t-badge.pro{background:linear-gradient(135deg,#f59e0b,#d97706)}
-.t-badge.free{background:#22c55e}
-.t-lock{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;backdrop-filter:blur(2px)}
-
-/* ثيمات السيرة */
-.theme-modern #cvPreview{border-top:6px solid #111}
-.theme-classic #cvPreview{font-family:'Times New Roman',serif; background:#fefefe}
-.theme-classic.cv-top{border-bottom:2px double #111}
-.theme-elegant #cvPreview{background:#fdf8f3; border:1px solid #e8d5b5}
-.theme-elegant.cv-top{border-bottom-color:#b45309; color:#7c3a00}
-.theme-creative #cvPreview{border-left:8px solid #7c3aed; background:linear-gradient(180deg,#fff,#f5f3ff)}
-.theme-executive #cvPreview{background:#0f172a; color:#e2e8f0}
-.theme-executive.cv-top{border-bottom-color:#38bdf8; color:#f1f5f9}
-.theme-executive.cv-text,.theme-executive.cv-head{color:#cbd5e1}
-.theme-minimal #cvPreview{border:none; box-shadow:none; font-family:'Inter',sans-serif}
-
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
+.cv-text{font-size:12.5px;white-space:pre-wrap;line-height:1.7}
+.layout{display:grid;grid-template-columns:110px 1fr;gap:15px;margin-top:10px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;justify-content:center;align-items:center;z-index:999;padding:15px}
 .modal.show{display:flex}
 .modal-box{background:#fff;padding:26px;border-radius:22px;max-width:410px;width:100%;text-align:center}
 .vf-box{background:#fff5f6;border:1.8px dashed #e11d48;border-radius:14px;padding:14px;margin:14px 0}
-.input-secure{width:100%;padding:12px;margin-bottom:8px;border:1.5px solid #ddd;border-radius:10px;text-align:center;font-weight:700;font-family:inherit}
+.input-secure{width:100%;padding:12px;margin-bottom:8px;border:1.5px solid #ddd;border-radius:10px;text-align:center;font-weight:700}
 .input-secure.error{border-color:#e11d48;background:#fff5f5}
-.err-msg{color:#e11d48;font-size:11px;display:none;text-align:right;margin:-4px 0 8px}
-.btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer}
+.err{color:#e11d48;font-size:11px;display:none;text-align:right;margin:-4px 0 8px}
+.btn-gold{width:100%;padding:14px;background:#111;color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer}
 .btn-gold:disabled{background:#ccc}
-@media print{.header,.form-box,.templates-box,.modal{display:none!important}.container{display:block}.preview-box{box-shadow:none}}
-@media(max-width:1100px){.container{grid-template-columns:1fr}.templates-box{order:-1}}
+@media print{.header,.form-box,.modal{display:none!important}.container{display:block}.preview-box{box-shadow:none}}
+@media(max-width:900px){.container{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="header">
-<b>SIRA - سِيرة ✨</b>
-<button class="lang-btn" id="langBtn" onclick="toggleLang()">English 🇺🇸</button>
-</div>
-
+<div class="header"><b id="logo">SIRA - سِيرة ✨</b><button class="lang-btn" id="langBtn" onclick="toggleLang()">English 🇺🇸</button></div>
 <div class="container">
-<!-- فورم -->
 <div class="form-box">
 <h3 id="fTitle">📝 بياناتك</h3>
 <input type="file" accept="image/*" onchange="loadImg(event)">
-<input id="iName" placeholder="الاسم الكامل" oninput="u()">
+<span class="small-label" id="lblAr">الاسم بالعربي *</span>
+<input id="iNameAr" placeholder="مثال: جهاد محمد" oninput="u()">
+<span class="small-label" id="lblEn">الاسم بالانجليزي *</span>
+<input id="iNameEn" placeholder="Example: Gehad Mohamed" oninput="u()">
 <input id="iJob" placeholder="المسمى الوظيفي" oninput="u()">
 <input id="iPhone" placeholder="رقم الهاتف" oninput="u()">
 <input id="iEmail" placeholder="البريد" oninput="u()">
 <input id="iAddress" placeholder="العنوان" oninput="u()">
-<textarea id="iAbout" rows="2" placeholder="نبذة عنك" oninput="u()"></textarea>
-<textarea id="iExp" rows="3" placeholder="الخبرات" oninput="u()"></textarea>
-<textarea id="iEdu" rows="2" placeholder="المؤهل" oninput="u()"></textarea>
-<textarea id="iCourses" rows="2" placeholder="الكورسات" oninput="u()"></textarea>
-<button class="btn-main" id="btnDown" onclick="openPay()">⬇️ تحميل السيرة</button>
+<textarea id="iAbout" rows="3" placeholder="نبذة عنك" oninput="u()"></textarea>
+<textarea id="iExp" rows="4" placeholder="الخبرات" oninput="u()"></textarea>
+<textarea id="iEdu" rows="3" placeholder="المؤهل" oninput="u()"></textarea>
+<textarea id="iCourses" rows="3" placeholder="الكورسات" oninput="u()"></textarea>
+<button class="btn-main" id="btnDown" onclick="openPay()">⬇️ تحميل - 100 جنيه</button>
 </div>
-
-<!-- معاينة -->
-<div class="preview-box">
-<div id="cvPreview">
-<div class="cv-top"><div><h1 id="cName"></h1><div id="cJob" style="color:#666"></div><div class="layout"><div style="border-left:1px solid #eee;padding-left:10px"><div id="cContact" style="font-size:11px;line-height:2.1"></div></div><div><div class="cv-head" id="lAbout">النبذة</div><div id="cAbout" class="cv-text"></div></div></div></div><img id="cvImg"></div>
-<div style="margin-top:12px"><div class="cv-head" id="lExp">الخبرات</div><div id="cExp" class="cv-text"></div></div>
-<div style="margin-top:12px"><div class="cv-head" id="lEdu">التعليم</div><div id="cEdu" class="cv-text"></div></div>
-<div style="margin-top:12px"><div class="cv-head" id="lCourses">الكورسات</div><div id="cCourses" class="cv-text"></div></div>
+<div class="preview-box"><div id="cvPreview"><div class="cv-top"><div><h1 id="cName"></h1><div id="cJob" style="color:#666"></div><div class="layout"><div style="border-left:1px solid #eee;padding-left:10px"><div id="cContact" style="font-size:11px;line-height:2.1"></div></div><div><div class="cv-head" id="lAbout">النبذة</div><div id="cAbout" class="cv-text"></div></div></div></div><img id="cvImg"></div><div style="margin-top:15px"><div class="cv-head" id="lExp">الخبرات</div><div id="cExp" class="cv-text"></div></div><div style="margin-top:15px"><div class="cv-head" id="lEdu">التعليم</div><div id="cEdu" class="cv-text"></div></div><div style="margin-top:15px"><div class="cv-head" id="lCourses">الكورسات</div><div id="cCourses" class="cv-text"></div></div></div></div>
 </div>
-</div>
-
-<!-- القوالب -->
-<div class="templates-box">
-<div class="t-title"><span id="tTitle">🎨 القوالب</span><span style="font-size:10px;color:#666" id="tSub">1 مجاني • 5 برو</span></div>
-<div class="t-grid" id="tGrid"></div>
-<div style="margin-top:12px;background:#f0f7ff;border-radius:12px;padding:10px;text-align:center">
-<div style="font-size:11px;font-weight:800" id="proInfo">✨ ترقية SIRA PRO</div>
-<div style="font-size:10px;color:#666;margin-top:3px" id="proDesc">افتحي 5 قوالب احترافية + تحميل PDF بلا علامة</div>
-<div style="font-size:12px;font-weight:900;margin-top:6px;color:#e11d48">100 جنيه فقط</div>
-</div>
-</div>
-</div>
-
-<!-- دفع -->
 <div id="payModal" class="modal">
 <div class="modal-box">
-<div style="background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:800;display:inline-block">SIRA PRO ✨</div>
-<h2 id="payTitle" style="margin-top:10px">فتح القوالب المدفوعة</h2>
-<p id="payDesc" style="color:#666;font-size:13px;margin:8px 0;line-height:1.5">حولي 100 جنيه وافتحي كل القوالب الاحترافية + تحميل بجودة عالية</p>
-<div class="vf-box">
-<div style="font-size:11px;color:#666" id="payVia">الدفع عبر</div>
-<div style="font-weight:900;color:#e11d48">Vodafone Cash</div>
-<div style="font-size:22px;font-weight:900">01013724578</div>
-</div>
+<h2 id="payTitle">تأكيد الدفع</h2>
+<div class="vf-box"><div style="font-weight:900;color:#e11d48">Vodafone Cash</div><div style="font-size:22px;font-weight:900">01013724578</div><div style="font-size:11px;color:#666" id="priceTxt">100 جنيه - تفعيل فوري</div></div>
 <div style="text-align:right">
-<label style="font-size:12px;font-weight:700" id="lblTrx">رقم العملية *</label>
-<input id="trxId" class="input-secure" placeholder="من رسالة فودافون" oninput="validateForm()"><div class="err-msg" id="errTrx">لازم رقم العملية</div>
-<label style="font-size:12px;font-weight:700" id="lblPhone">رقمك اللي حولتي منه *</label>
-<input id="senderPhone" class="input-secure" placeholder="01xxxxxxxxx" oninput="validateForm()"><div class="err-msg" id="errPhone">لازم رقمك</div>
-<label style="font-size:12px;font-weight:700" id="lblName">اسمك *</label>
-<input id="senderName" class="input-secure" placeholder="اسمك" oninput="validateForm()"><div class="err-msg" id="errName">لازم اسمك</div>
+<label style="font-size:11px;font-weight:700" id="lblTrx">رقم العملية *</label>
+<input id="trxId" class="input-secure" placeholder="من رسالة فودافون" oninput="check()"><div class="err" id="e1">لازم رقم العملية</div>
+<label style="font-size:11px;font-weight:700" id="lblPhone">رقمك *</label>
+<input id="sPhone" class="input-secure" placeholder="01xxxxxxxxx" oninput="check()"><div class="err" id="e2">لازم رقمك</div>
+<label style="font-size:11px;font-weight:700" id="lblName">اسمك *</label>
+<input id="sName" class="input-secure" placeholder="اسمك" oninput="check()"><div class="err" id="e3">لازم اسمك</div>
 </div>
-<button class="btn-gold" id="btnWa" onclick="confirmAndDownload()" disabled>تأكيد وفتح القوالب 💳</button>
-<button onclick="closePay()" style="margin-top:8px;background:none;border:none;color:#999;cursor:pointer;font-size:13px" id="btnCancel">رجوع</button>
+<button class="btn-gold" id="btnGo" onclick="done()" disabled>تأكيد وتحميل 💳</button>
+<button onclick="closePay()" style="margin-top:8px;background:none;border:none;color:#999;cursor:pointer">رجوع</button>
 </div>
 </div>
-
 <script>
-let isAr=true, isPaid=false, selected='modern';
-const templates=[
-{id:'modern',name:'عصري',nameEn:'Modern',icon:'🧾',free:true},
-{id:'classic',name:'كلاسيكي',nameEn:'Classic',icon:'📜',free:false},
-{id:'elegant',name:'أنيق',nameEn:'Elegant',icon:'✨',free:false},
-{id:'creative',name:'إبداعي',nameEn:'Creative',icon:'🎨',free:false},
-{id:'executive',name:'تنفيذي',nameEn:'Executive',icon:'💼',free:false},
-{id:'minimal',name:'بسيط',nameEn:'Minimal',icon:'🤍',free:false},
-];
-const T={
-ar:{fTitle:'📝 بياناتك',tTitle:'🎨 القوالب',tSub:'1 مجاني • 5 برو',proInfo:'✨ ترقية SIRA PRO',proDesc:'افتحي 5 قوالب احترافية + تحميل PDF بلا علامة',n:'الاسم الكامل',j:'المسمى الوظيفي',p:'رقم الهاتف',e:'البريد',a:'العنوان',ab:'نبذة عنك',ex:'الخبرات',ed:'المؤهل',co:'الكورسات',btnDown:'⬇️ تحميل السيرة',about:'النبذة',exp:'الخبرات',edu:'التعليم',courses:'الكورسات',payTitle:'فتح القوالب المدفوعة',payDesc:'حولي 100 جنيه وافتحي كل القوالب الاحترافية + تحميل بجودة عالية',via:'الدفع عبر',lblTrx:'رقم العملية *',lblPhone:'رقمك اللي حولتي منه *',lblName:'اسمك *',btnWa:'تأكيد وفتح القوالب 💳',cancel:'رجوع'},
-en:{fTitle:'📝 Your Info',tTitle:'🎨 Templates',tSub:'1 free • 5 pro',proInfo:'✨ SIRA PRO Upgrade',proDesc:'Unlock 5 pro templates + HD PDF download',n:'Full Name',j:'Job Title',p:'Phone',e:'Email',a:'Address',ab:'About',ex:'Experience',ed:'Education',co:'Courses',btnDown:'⬇️ Download CV',about:'Summary',exp:'Experience',edu:'Education',courses:'Courses',payTitle:'Unlock Pro Templates',payDesc:'Pay 100 EGP to unlock all pro templates + HD download',via:'Payment via',lblTrx:'Transaction ID *',lblPhone:'Your number *',lblName:'Your name *',btnWa:'Confirm & Unlock 💳',cancel:'Back'}
-};
-function renderTemplates(){
-const grid=document.getElementById('tGrid'); grid.innerHTML='';
-templates.forEach(t=>{
-const locked=!t.free &&!isPaid;
-const div=document.createElement('div'); div.className=`t-card ${selected===t.id?'active':''}`;
-div.innerHTML=`<div class="t-thumb">${t.icon}</div><div class="t-name">${isAr?t.name:t.nameEn}</div><div class="t-badge ${t.free?'free':'pro'}">${t.free?(isAr?'مجاني':'FREE'):'PRO'}</div>${locked?`<div class="t-lock">🔒<span style="margin-top:4px">${isAr?'مقفل':'Locked'}</span></div>`:''}`;
-div.onclick=()=>selectTemplate(t.id);
-grid.appendChild(div);
-});
-}
-function selectTemplate(id){
-const tpl=templates.find(x=>x.id===id);
-if(!tpl.free &&!isPaid){openPay(); return;}
-selected=id;
-document.body.className=`theme-${id}`;
-renderTemplates();
-}
+let isAr=true;
 function toggleLang(){
-isAr=!isAr; const tr=isAr?T.ar:T.en;
+isAr=!isAr;
 document.documentElement.dir=isAr?'rtl':'ltr';
-langBtn.innerText=isAr?'English 🇺🇸':'عربي 🇪🇬';
-fTitle.innerText=tr.fTitle; tTitle.innerText=tr.tTitle; tSub.innerText=tr.tSub;
-proInfo.innerText=tr.proInfo; proDesc.innerText=tr.proDesc;
-iName.placeholder=tr.n; iJob.placeholder=tr.j; iPhone.placeholder=tr.p; iEmail.placeholder=tr.e; iAddress.placeholder=tr.a;
-iAbout.placeholder=tr.ab; iExp.placeholder=tr.ex; iEdu.placeholder=tr.ed; iCourses.placeholder=tr.co;
-btnDown.innerText=tr.btnDown; lAbout.innerText=tr.about; lExp.innerText=tr.exp; lEdu.innerText=tr.edu; lCourses.innerText=tr.courses;
-payTitle.innerText=tr.payTitle; payDesc.innerText=tr.payDesc; payVia.innerText=tr.via;
-lblTrx.innerText=tr.lblTrx; lblPhone.innerText=tr.lblPhone; lblName.innerText=tr.lblName;
-btnWa.innerText=tr.btnWa; btnCancel.innerText=tr.cancel;
-renderTemplates();
+document.getElementById('logo').innerText=isAr?'SIRA - سِيرة ✨':'SIRA ✨';
+document.getElementById('langBtn').innerText=isAr?'English 🇺🇸':'عربي 🇪🇬';
+document.getElementById('fTitle').innerText=isAr?'📝 بياناتك':'📝 Your Info';
+document.getElementById('lblAr').innerText=isAr?'الاسم بالعربي *':'Arabic Name *';
+document.getElementById('lblEn').innerText=isAr?'الاسم بالانجليزي *':'English Name *';
+document.getElementById('lAbout').innerText=isAr?'النبذة':'Summary';
+document.getElementById('lExp').innerText=isAr?'الخبرات':'Experience';
+document.getElementById('lEdu').innerText=isAr?'التعليم':'Education';
+document.getElementById('lCourses').innerText=isAr?'الكورسات':'Courses';
+document.getElementById('btnDown').innerText=isAr?'⬇️ تحميل - 100 جنيه':'⬇️ Download - 100 EGP';
+u();
 }
 function loadImg(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=x=>{cvImg.src=x.target.result;cvImg.style.display='block';};r.readAsDataURL(f);}
-function u(){cName.innerText=iName.value;cJob.innerText=iJob.value;let h='';if(iPhone.value)h+=`📞 ${iPhone.value}<br>`;if(iEmail.value)h+=`✉️ ${iEmail.value}<br>`;if(iAddress.value)h+=`📍 ${iAddress.value}`;cContact.innerHTML=h;cAbout.innerText=iAbout.value;cExp.innerText=iExp.value;cEdu.innerText=iEdu.value;cCourses.innerText=iCourses.value;}
-function openPay(){payModal.classList.add('show')}function closePay(){payModal.classList.remove('show')}
-function validateForm(){const a=trxId.value.trim(),b=senderPhone.value.trim(),c=senderName.value.trim();let ok=true;if(!a){trxId.classList.add('error');errTrx.style.display='block';ok=false}else{trxId.classList.remove('error');errTrx.style.display='none'}if(!b){senderPhone.classList.add('error');errPhone.style.display='block';ok=false}else{senderPhone.classList.remove('error');errPhone.style.display='none'}if(!c){senderName.classList.add('error');errName.style.display='block';ok=false}else{senderName.classList.remove('error');errName.style.display='none'}btnWa.disabled=!ok;return ok;}
-function confirmAndDownload(){
-if(!validateForm())return;
-const trx=encodeURIComponent(trxId.value.trim()),phone=encodeURIComponent(senderPhone.value.trim()),name=encodeURIComponent(senderName.value.trim());
-const msg=`مرحبا جهاد، حولت 100 جنيه فودافون كاش على 01013724578 لفتح القوالب%0Aالاسم: ${name}%0Aرقمي: ${phone}%0Aرقم العملية: ${trx}`;
-window.open(`https://wa.me/201013724578?text=${msg}`,'_blank');
-isPaid=true; renderTemplates(); closePay();
-setTimeout(()=>{if(confirm(isAr?'تم التفعيل! تحملي السيرة دلوقتي؟':'Activated! Download CV now?')) window.print();},800);
+function u(){
+// السر هنا: الاسم بيتغير حسب اللغة
+let displayName = '';
+if(isAr){ displayName = iNameAr.value || iNameEn.value; } else { displayName = iNameEn.value || iNameAr.value; }
+cName.innerText=displayName;
+cJob.innerText=iJob.value;
+let h=''; if(iPhone.value)h+=`📞 ${iPhone.value}<br>`; if(iEmail.value)h+=`✉️ ${iEmail.value}<br>`; if(iAddress.value)h+=`📍 ${iAddress.value}`;
+cContact.innerHTML=h; cAbout.innerText=iAbout.value; cExp.innerText=iExp.value; cEdu.innerText=iEdu.value; cCourses.innerText=iCourses.value;
 }
-u(); renderTemplates(); selectTemplate('modern');
+function openPay(){payModal.classList.add('show')}function closePay(){payModal.classList.remove('show')}
+function check(){let ok=true;if(!trxId.value.trim()){trxId.classList.add('error');e1.style.display='block';ok=false}else{trxId.classList.remove('error');e1.style.display='none'}if(!sPhone.value.trim()){sPhone.classList.add('error');e2.style.display='block';ok=false}else{sPhone.classList.remove('error');e2.style.display='none'}if(!sName.value.trim()){sName.classList.add('error');e3.style.display='block';ok=false}else{sName.classList.remove('error');e3.style.display='none'}btnGo.disabled=!ok;return ok;}
+function done(){if(!check())return;const trx=encodeURIComponent(trxId.value.trim()),phone=encodeURIComponent(sPhone.value.trim()),name=encodeURIComponent(sName.value.trim());const msg=`مرحبا جهاد، حولت 100 جنيه فودافون كاش%0Aالاسم: ${name}%0Aرقمي: ${phone}%0Aرقم العملية: ${trx}`;window.open(`https://wa.me/201013724578?text=${msg}`,'_blank');closePay();setTimeout(()=>window.print(),800);}
+u();
 </script>
 </body>
 </html>

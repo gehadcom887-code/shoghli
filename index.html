@@ -3,102 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIRA Pro - احترافي</title>
+<title>SIRA - Professional</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Cairo',sans-serif;background:#e8eaed}
-.header{background:white;padding:15px;text-align:center;box-shadow:0 1px 2px #ddd;position:sticky;top:0;z-index:10}
+.header{background:white;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 2px #ddd;position:sticky;top:0;z-index:10}
+.lang-btn{padding:8px 16px;background:#1a73e8;color:white;border:none;border-radius:20px;cursor:pointer;font-weight:bold}
 .container{max-width:1100px;margin:20px auto;display:grid;grid-template-columns:380px 1fr;gap:20px;padding:0 15px}
 @media(max-width:900px){.container{grid-template-columns:1fr}}
 .form-box,.preview-box{background:white;border-radius:8px;padding:20px;box-shadow:0 1px 3px #ddd}
-.form-box h3{margin-bottom:12px}
-.form-box input,.form-box textarea{width:100%;padding:10px;margin-bottom:10px;border:1px solid #dadce0;border-radius:6px;font-family:inherit}
+input,textarea{width:100%;padding:10px;margin-bottom:10px;border:1px solid #dadce0;border-radius:6px;font-family:inherit}
 .btn{width:100%;padding:12px;background:#1a73e8;color:white;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
-/* Google Docs Style - احترافي */
-#cvPreview{background:white;padding:30px 35px;min-height:600px;border:1px solid #dadce0;line-height:1.6;color:#202124}
-.cv-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #202124;padding-bottom:15px;margin-bottom:20px}
-.cv-top-right h1{font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px;color:#000}
-.cv-top-right.title{font-size:14px;color:#5f6368;margin-bottom:10px}
-.cv-contact-pro{font-size:11px;color:#444;line-height:1.9}
-.cv-contact-pro div{white-space:nowrap}
-#cvImgPro{width:90px;height:90px;border-radius:8px;object-fit:cover;display:none;border:1px solid #eee}
-.cv-sec{margin-bottom:20px}
-.cv-sec-head{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#000;border-bottom:1px solid #dadce0;padding-bottom:4px;margin-bottom:10px}
-.cv-text{font-size:12.5px;white-space:pre-wrap;color:#202124}
-.layout-side{display:grid;grid-template-columns:160px 1fr;gap:25px}
-.side-col{border-left:1px solid #eee;padding-left:15px}
-.main-col{padding-right:5px}
-@media(max-width:600px){.layout-side{grid-template-columns:1fr}.side-col{border:none;padding:0}}
-.cost-pro{background:#f8f9fa;border:1px dashed #dadce0;padding:6px 10px;border-radius:4px;font-size:11px;margin-top:10px;display:none}
+#cvPreview{background:white;padding:35px;min-height:600px;border:1px solid #dadce0;color:#202124}
+.cv-top{display:flex;justify-content:space-between;border-bottom:2px solid #202124;padding-bottom:15px;margin-bottom:20px}
+.cv-top h1{font-size:26px;color:#000}
+.title{font-size:14px;color:#5f6368}
+.cv-contact{font-size:11px;line-height:2.2;color:#444}
+#cvImg{width:90px;height:90px;border-radius:8px;object-fit:cover;display:none;border:1px solid #eee}
+.cv-sec{margin-bottom:22px}
+.cv-head{font-size:13px;font-weight:700;border-bottom:1px solid #dadce0;padding-bottom:4px;margin-bottom:10px}
+.cv-text{font-size:12.5px;white-space:pre-wrap}
+.layout{display:grid;grid-template-columns:135px 1fr;gap:25px;margin-top:12px}
+.side{border-left:1px solid #eee;padding-left:15px}
+html[dir="ltr"].side{border-left:none;border-right:1px solid #eee;padding-left:0;padding-right:15px}
 </style>
 </head>
 <body>
-<div class="header"><b>SIRA</b> - النموذج الاحترافي مثل Google</div>
+<div class="header">
+<b id="hTitle">SIRA - احترافي</b>
+<button class="lang-btn" onclick="toggleLang()" id="langBtn">English 🇺🇸</button>
+</div>
+
 <div class="container">
 <div class="form-box">
-<h3>اكتبي بياناتك</h3>
-<input type="file" id="iImg" accept="image/*" onchange="loadImg(event)" style="font-size:12px">
-<input id="iName" placeholder="الاسم الكامل" oninput="u()">
-<input id="iTitle" placeholder="المسمى الوظيفي - مثال: محاسبة" oninput="u()">
-<input id="iPhone" placeholder="رقم التليفون" oninput="u()">
-<input id="iEmail" placeholder="البريد الإلكتروني" oninput="u()">
-<input id="iAddress" placeholder="العنوان - المنوفية / أشمون" oninput="u()">
-<input id="iCost" placeholder="التكلفة - مثال: 150 جنيه/ساعة" oninput="u()">
-<textarea id="iAbout" rows="3" placeholder="الملخص المهني / النبذة" oninput="u()"></textarea>
-<textarea id="iExp" rows="5" placeholder="الخبرات - كل خبرة في سطر" oninput="u()"></textarea>
+<h3 id="fTitle">بياناتك</h3>
+<input type="file" accept="image/*" onchange="loadImg(event)">
+<input id="iName" placeholder="الاسم" oninput="u()">
+<input id="iJob" placeholder="المسمى الوظيفي" oninput="u()">
+<input id="iPhone" placeholder="رقم الهاتف" oninput="u()">
+<input id="iEmail" placeholder="البريد" oninput="u()">
+<input id="iAddress" placeholder="العنوان" oninput="u()">
+<textarea id="iAbout" rows="3" placeholder="النبذة" oninput="u()"></textarea>
+<textarea id="iExp" rows="5" placeholder="الخبرات" oninput="u()"></textarea>
 <textarea id="iEdu" rows="3" placeholder="التعليم" oninput="u()"></textarea>
-<textarea id="iCourses" rows="3" placeholder="الكورسات والمهارات" oninput="u()"></textarea>
-<button class="btn" onclick="window.print()">تحميل PDF احترافي</button>
+<textarea id="iCourses" rows="3" placeholder="الكورسات" oninput="u()"></textarea>
+<button class="btn" id="pdfBtn" onclick="window.print()">تحميل PDF</button>
 </div>
 
 <div class="preview-box">
-<div style="text-align:center;font-size:11px;color:#888;margin-bottom:10px">شكل احترافي - Google Docs Style - مقبول في كل الشركات</div>
 <div id="cvPreview">
   <div class="cv-top">
-    <div class="cv-top-right">
-      <h1 id="cName">اسمك هنا</h1>
-      <div class="title" id="cTitle">المسمى الوظيفي</div>
-      <div class="layout-side">
-        <div class="side-col">
-          <div id="cContact" class="cv-contact-pro">بيانات التواصل ستظهر هنا تحت بعض</div>
-          <div id="cCost" class="cost-pro"></div>
-        </div>
-        <div class="main-col">
-          <div class="cv-sec"><div class="cv-sec-head">الملخص</div><div id="cAbout" class="cv-text">نبذة مختصرة عنك</div></div>
-        </div>
+    <div>
+      <h1 id="cName"></h1>
+      <div class="title" id="cJob"></div>
+      <div class="layout">
+        <div class="side"><div id="cContact" class="cv-contact"></div></div>
+        <div><div class="cv-sec"><div class="cv-head" id="lAbout">النبذة</div><div id="cAbout" class="cv-text"></div></div></div>
       </div>
     </div>
-    <img id="cvImgPro">
+    <img id="cvImg">
   </div>
-  <div class="cv-sec"><div class="cv-sec-head">الخبرة العملية</div><div id="cExp" class="cv-text">الخبرات</div></div>
-  <div class="cv-sec"><div class="cv-sec-head">التعليم</div><div id="cEdu" class="cv-text">التعليم</div></div>
-  <div class="cv-sec"><div class="cv-sec-head">الكورسات والمهارات</div><div id="cCourses" class="cv-text">الكورسات</div></div>
+  <div class="cv-sec"><div class="cv-head" id="lExp">الخبرات</div><div id="cExp" class="cv-text"></div></div>
+  <div class="cv-sec"><div class="cv-head" id="lEdu">التعليم</div><div id="cEdu" class="cv-text"></div></div>
+  <div class="cv-sec"><div class="cv-head" id="lCourses">الكورسات</div><div id="cCourses" class="cv-text"></div></div>
 </div>
 </div>
 </div>
-</div>
+
 <script>
-function loadImg(e){
- const f=e.target.files[0]; if(!f) return;
- const r=new FileReader();
- r.onload=ev=>{const im=document.getElementById('cvImgPro'); im.src=ev.target.result; im.style.display='block';};
- r.readAsDataURL(f);
+let isAr=true;
+const T={
+ ar:{h:'SIRA - احترافي',b:'English 🇺🇸',f:'بياناتك',n:'الاسم',j:'المسمى الوظيفي',p:'رقم الهاتف',e:'البريد',a:'العنوان',ab:'النبذة',ex:'الخبرات',ed:'التعليم',co:'الكورسات',pdf:'تحميل PDF',l1:'النبذة',l2:'الخبرات',l3:'التعليم',l4:'الكورسات'},
+ en:{h:'SIRA - Professional',b:'عربي 🇪🇬',f:'Your Info',n:'Full Name',j:'Job Title',p:'Phone',e:'Email',a:'Address',ab:'Summary',ex:'Experience',ed:'Education',co:'Courses',pdf:'Download PDF',l1:'Summary',l2:'Experience',l3:'Education',l4:'Courses'}
+};
+function toggleLang(){
+ isAr=!isAr;
+ const t=isAr?T.ar:T.en;
+ document.documentElement.lang=isAr?'ar':'en';
+ document.documentElement.dir=isAr?'rtl':'ltr';
+ hTitle.innerText=t.h; langBtn.innerText=t.b; fTitle.innerText=t.f;
+ iName.placeholder=t.n; iJob.placeholder=t.j; iPhone.placeholder=t.p; iEmail.placeholder=t.e; iAddress.placeholder=t.a;
+ iAbout.placeholder=t.ab; iExp.placeholder=t.ex; iEdu.placeholder=t.ed; iCourses.placeholder=t.co;
+ pdfBtn.innerText=t.pdf; lAbout.innerText=t.l1; lExp.innerText=t.l2; lEdu.innerText=t.l3; lCourses.innerText=t.l4;
+ document.body.style.fontFamily=isAr?"'Cairo',sans-serif":"'Inter',sans-serif";
 }
+function loadImg(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=x=>{cvImg.src=x.target.result;cvImg.style.display='block';};r.readAsDataURL(f);}
 function u(){
- document.getElementById('cName').innerText=document.getElementById('iName').value||'اسمك هنا';
- document.getElementById('cTitle').innerText=document.getElementById('iTitle').value||'المسمى الوظيفي';
- let h='';
- if(iPhone.value) h+=`<div>📞 ${iPhone.value}</div>`;
- if(iEmail.value) h+=`<div>✉️ ${iEmail.value}</div>`;
- if(iAddress.value) h+=`<div>📍 ${iAddress.value}</div>`;
- document.getElementById('cContact').innerHTML=h||'بيانات التواصل';
- const cost=iCost.value; const cb=document.getElementById('cCost');
- if(cost){cb.innerText='💰 '+cost; cb.style.display='block';} else cb.style.display='none';
- cAbout.innerText=iAbout.value||'نبذة مختصرة عنك';
- cExp.innerText=iExp.value||'الخبرات';
- cEdu.innerText=iEdu.value||'التعليم';
- cCourses.innerText=iCourses.value||'الكورسات';
+ cName.innerText=iName.value; cJob.innerText=iJob.value;
+ let h=''; if(iPhone.value) h+=`<div>📞 ${iPhone.value}</div>`; if(iEmail.value) h+=`<div>✉️ ${iEmail.value}</div>`; if(iAddress.value) h+=`<div>📍 ${iAddress.value}</div>`;
+ cContact.innerHTML=h; cAbout.innerText=iAbout.value; cExp.innerText=iExp.value; cEdu.innerText=iEdu.value; cCourses.innerText=iCourses.value;
 }
 </script>
 </body>

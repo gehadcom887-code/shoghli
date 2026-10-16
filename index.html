@@ -3,82 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شغلي - CV احترافي</title>
+<title>شغلي - قوالب CV احترافية</title>
 <style>
-*{box-sizing:border-box;font-family:Tahoma,sans-serif}
-body{background:#f5f7fa;margin:0;padding:15px}
-header{text-align:center;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:white;padding:25px;border-radius:15px}
-.builder{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
-@media(max-width:800px){.builder{grid-template-columns:1fr}}
-.form{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
-.form input,.form textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
-button{width:100%;padding:12px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:10px}
-.previewBtn{background:#dfe6e9}
+*{box-sizing:border-box;font-family:'Segoe UI',Tahoma}
+body{background:#f0f2f5;margin:0;padding:0}
+header{background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:white;padding:25px;text-align:center}
+.templates{display:flex;gap:10px;justify-content:center;margin:15px;flex-wrap:wrap}
+.t-btn{padding:10px 20px;border:2px solid #6c5ce7;background:white;border-radius:20px;cursor:pointer;font-weight:bold}
+.t-btn.active{background:#6c5ce7;color:white}
+.builder{display:grid;grid-template-columns:1fr 1.3fr;gap:20px;padding:20px}
+@media(max-width:900px){.builder{grid-template-columns:1fr}}
+.form,.cv-area{background:white;padding:20px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.07)}
+input,textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ddd;border-radius:8px}
+button.main{width:100%;padding:13px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:8px}
+.preview{background:#dfe6e9}
 .download{background:#00b894;color:white}
-.cv{background:white;padding:25px;border-radius:12px;min-height:500px;position:relative}
-#watermark{position:absolute;bottom:40%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:32px;color:rgba(0,0,0,0.08)}
-#pay-section{display:none;margin-top:15px}
-.pay-box{background:#fff8e1;border:2px dashed #fdcb6e;padding:20px;border-radius:12px;text-align:center}
-.price{font-size:26px;font-weight:bold;color:#e17055}
-.num{background:#2d3436;color:white;padding:10px;border-radius:8px;font-size:20px;margin:10px 0;letter-spacing:2px}
+.cv{padding:30px;min-height:600px;position:relative;transition:.3s}
+#watermark{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:40px;color:rgba(0,0,0,0.07);font-weight:bold}
+/* قالب 1 مودرن */
+.template-modern #p-name{color:#6c5ce7;border-bottom:3px solid #6c5ce7;padding-bottom:10px}
+.template-modern #p-title{background:#6c5ce7;color:white;display:inline-block;padding:5px 15px;border-radius:20px}
+/* قالب 2 كلاسيك */
+.template-classic{border-right:5px solid #2d3436}
+.template-classic #p-name{color:#2d3436}
+.template-classic #p-title{color:#636e72;border-bottom:2px solid #ddd}
+/* قالب 3 ابداعي */
+.template-creative{background:linear-gradient(to bottom,#f9f9ff 0%,#ffffff 100%)}
+.template-creative #p-name{background:linear-gradient(135deg,#e84393,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:32px}
+.pay-box{background:#fff8e1;border:2px dashed #fdcb6e;padding:15px;border-radius:12px;text-align:center;margin-top:15px;display:none}
+.num{background:#2d3436;color:#fff;padding:10px;border-radius:8px;font-size:20px;margin:10px 0}
+.courses{padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.course{background:white;padding:15px;border-radius:12px;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.course h4{color:#6c5ce7}
 </style>
 </head>
 <body>
 <header>
-<h1>شغلي - صانع السيرة الذاتية</h1>
-<p>اعملي CV احترافي في 5 دقايق</p>
+<h1>شغلي - قوالب CV احترافية 💼</h1>
+<p>اختاري القالب - اكتبي بياناتك - حملي</p>
 </header>
+
+<div class="templates">
+<button class="t-btn active" onclick="setTemplate('modern')">مودرن</button>
+<button class="t-btn" onclick="setTemplate('classic')">كلاسيك</button>
+<button class="t-btn" onclick="setTemplate('creative')">إبداعي 🔥</button>
+</div>
 
 <div class="builder">
 <div class="form">
-<h3>بياناتك</h3>
-<input id="name" placeholder="الاسم الكامل">
-<input id="title" placeholder="المسمى الوظيفي">
-<input id="phone" placeholder="الموبايل">
-<textarea id="about" placeholder="نبذة عنك"></textarea>
-<textarea id="skills" placeholder="المهارات"></textarea>
-<textarea id="exp" placeholder="الخبرات"></textarea>
-
-<button class="previewBtn" onclick="updatePreview()">معاينة</button>
-<button class="download" onclick="handleDownload()">تحميل PDF مجاني</button>
-
-<div id="pay-section">
-<div class="pay-box">
-<h3>🔒 عايزة النسخة الاحترافية؟</h3>
-<p>النسخة المجانية فيها علامة مائية</p>
-<div class="price">30 جنيه فقط</div>
-<p>حولي على فودافون كاش:</p>
+<input id="name" placeholder="الاسم: مثلا جهاد أحمد" oninput="update()">
+<input id="title" placeholder="المسمى: مثلا محاسبة" oninput="update()">
+<input id="phone" placeholder="الموبايل: 01013724578" oninput="update()">
+<textarea id="about" placeholder="نبذة عنك" oninput="update()"></textarea>
+<textarea id="skills" placeholder="مهاراتك: اكسيل - انجليزي" oninput="update()"></textarea>
+<textarea id="exp" placeholder="خبراتك" oninput="update()"></textarea>
+<button class="main preview" onclick="update()">معاينة فورية</button>
+<button class="main download" onclick="showPay()">تحميل PDF بدون علامة مائية</button>
+<div id="pay" class="pay-box">
+<h3>🔒 النسخة الاحترافية - 30ج</h3>
 <div class="num">01013724578</div>
-<p style="font-size:12px;color:#636e72">بعد التحويل ابعتي سكرين شوت على نفس الرقم وهنبعتلك كود التفعيل</p>
-<button onclick="alert('بعد ما تحولي على 01013724578 ابعتي رسالة بالاسم وهنفعل التحميل الاحترافي ليكي')" style="background:#e84393;color:white">لقد حولت - اطلب التفعيل</button>
+<p>فودافون كاش - ابعتي سكرين شوت</p>
+<button class="main" style="background:#e84393;color:white" onclick="alert('تمام! حولي على 01013724578 وابعتي سكرين شوت على واتساب نفس الرقم وهنبعتلك الملف بدون علامة مائية فورا')">لقد دفعت</button>
+</div>
+</div>
+
+<div class="cv-area">
+<div id="cv" class="cv template-modern">
+<h1 id="p-name">جهاد أحمد</h1>
+<h3 id="p-title">محاسبة</h3>
+<p><strong>📞</strong> <span id="p-phone">01013724578</span></p>
+<hr>
+<p id="p-about">نبذة عنك هتظهر هنا...</p>
+<h4>المهارات</h4>
+<p id="p-skills"></p>
+<h4>الخبرات</h4>
+<p id="p-exp"></p>
+<div id="watermark">SHOGHLI</div>
 </div>
 </div>
 </div>
 
-<div class="cv" id="cvPreview">
-<h2 id="p-name">الاسم</h2>
-<h4 id="p-title">المسمى الوظيفي</h4>
-<p id="p-about"></p>
-<p id="p-skills"></p>
-<p id="p-exp"></p>
-<div id="watermark">Shoghli - مجاني</div>
+<div style="padding:20px">
+<h2 style="text-align:center">📚 كورسات شغلي المجانية</h2>
+<div class="courses">
+<div class="course"><h4>كورس CV احترافي</h4><p>ازاي تكتبي CV يتقبل</p></div>
+<div class="course"><h4>كورس الانترفيو</h4><p>تجاوبي ازاي في المقابلة</p></div>
+<div class="course"><h4>كورس اكسيل للمبتدئين</h4><p>من الصفر للاحتراف</p></div>
 </div>
 </div>
 
 <script>
-function updatePreview(){
-document.getElementById('p-name').innerText=document.getElementById('name').value||'الاسم';
+function update(){
+document.getElementById('p-name').innerText=document.getElementById('name').value||'جهاد أحمد';
 document.getElementById('p-title').innerText=document.getElementById('title').value||'المسمى الوظيفي';
+document.getElementById('p-phone').innerText=document.getElementById('phone').value||'01013724578';
 document.getElementById('p-about').innerText=document.getElementById('about').value;
 document.getElementById('p-skills').innerText=document.getElementById('skills').value;
 document.getElementById('p-exp').innerText=document.getElementById('exp').value;
 }
-function handleDownload(){
-updatePreview();
-// هنا بيظهر قسم الدفع بس لما يدوس تحميل
-document.getElementById('pay-section').style.display='block';
-document.getElementById('pay-section').scrollIntoView({behavior:'smooth'});
-alert('تم تحميل النسخة المجانية - لو عايزة بدون علامة مائية حولي على 01013724578');
+function setTemplate(t){
+document.getElementById('cv').className='cv template-'+t;
+document.querySelectorAll('.t-btn').forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+}
+function showPay(){
+update();
+document.getElementById('pay').style.display='block';
+document.getElementById('pay').scrollIntoView({behavior:'smooth'});
 }
 </script>
 </body>
